@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-display: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Brand Palette */
+    --color-petrol-dark: #0c202d;
+    --color-petrol-surface: #123b53;
+    --color-petrol-elevated: #16374a;
+    --color-petrol-border: #1e4d6b;
+    --color-gold-primary: #f4b41a;
+    --color-gold-hover: #f7c438;
+    --color-gold-muted: #e5a912;
+    --color-text-main: #f8fafc;
+    --color-text-muted: #b4c9d7;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #0c202d;
+    color: #f8fafc;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: var(--font-serif);
+  }
+
+  .font-brand {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom scrollbar matching Petrol & Gold */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #091924;
+}
+::-webkit-scrollbar-thumb {
+  background: #194663;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f4b41a;
+}
+
+/* Glass & Glow effects with Petrol & Gold */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #ffe082 0%, #f4b41a 50%, #e5a912 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.petrol-card {
+  background: rgba(18, 59, 83, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 180, 26, 0.22);
+}
+
+.petrol-card-hover:hover {
+  border-color: rgba(244, 180, 26, 0.5);
+  box-shadow: 0 10px 30px -10px rgba(18, 59, 83, 0.4);
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.logo-glow {
+  box-shadow: 0 0 15px rgba(244, 180, 26, 0.6), 0 0 30px rgba(244, 180, 26, 0.3);
+}
+
+.logo-glow-hover:hover {
+  box-shadow: 0 0 25px rgba(244, 180, 26, 0.9), 0 0 50px rgba(244, 180, 26, 0.5);
+}
+
+

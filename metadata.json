@@ -1,0 +1,6 @@
+{
+  "name": "Divina Gula Francês - Cardápio Digital & Experiência Gastronômica",
+  "description": "Cardápio digital oficial do Restaurante Divina Gula Francês. Comida brasileira autêntica, moquecas, frutos do mar, carnes na brasa, drinks especiais e promoções na Praia do Francês - AL.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
