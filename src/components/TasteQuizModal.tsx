@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Sparkles, Star, Instagram, RotateCcw, Utensils, CheckCircle2 } from 'lucide-react';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { soundFx } from '../utils/audio';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TasteQuizModalProps {
   isOpen: boolean;
@@ -9,37 +10,20 @@ interface TasteQuizModalProps {
   onSelectRecommendedDish: (dishName: string) => void;
 }
 
-interface Question {
-  q: string;
-  o: string[];
-}
-
-const QUIZ_DATA: Question[] = [
-  { q: "1/12 - Qual é a sua vibe para começar o dia na Praia do Francês?", o: ["Curtir a brisa do mar com uma água de coco gelada", "Chegar com energia total para um mergulho"] },
-  { q: "2/12 - Como prefere abrir o apetite (sua entradinha favorita)?", o: ["Um caldinho bem quentinho e aconchegante", "Petiscos crocantes para partilhar com os amigos"] },
-  { q: "3/12 - Qual é a sua proteína principal de eleição?", o: ["Frutos do mar fresquinhos da costa", "Carnes vermelhas suculentas e saborosas"] },
-  { q: "4/12 - Como você gosta da textura da comida?", o: ["Cremosa, com bastante queijo ou catupiry", "Grelhada na brasa com toque defumado"] },
-  { q: "5/12 - Escolha um acompanhamento clássico brasileiro:", o: ["Arroz de castanha e purê de banana-da-terra", "Mandioca frita (macaxeira) bem crocante ou feijão tropeiro"] },
-  { q: "6/12 - Qual é o estilo de prato que mais combina com você?", o: ["Uma moqueca caprichada bem servida", "Um grelhado robusto na brasa"] },
-  { q: "7/12 - No quesito bebida, qual é a sua escolha número um?", o: ["Um drink especial da casa bem refrescante", "Um chopp bem gelado para o calor"] },
-  { q: "8/12 - Prefere refeições leves ou pratos bem fartos para partilhar?", o: ["Prato individual na medida certa", "Pratos fartos para partilhar até 2 ou 3 pessoas"] },
-  { q: "9/12 - Qual tempero ou toque regional não pode faltar?", o: ["Azeite de dendê e leite de coco", "Manteiga de garrafa e alho crocante"] },
-  { q: "10/12 - Como você prefere finalizar a refeição (sobremesa)?", o: ["Algo doce com chocolate ou texturas cremosas", "Frutas regionais, castanhas ou um toque crocante de tapioca"] },
-  { q: "11/12 - Qual é a sua principal companhia num almoço de restaurante?", o: ["Família reunida num domingo especial", "Amigos para botar a conversa em dia no happy hour"] },
-  { q: "12/12 - Por fim, qual é a sua maior prioridade ao escolher onde comer?", o: ["Qualidade superior de comida brasileira autêntica", "Ambiente agradável com mesas externas e ótimo atendimento"] }
-];
-
 export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
   isOpen,
   onClose,
   onSelectRecommendedDish,
 }) => {
+  const { t, quizQuestions } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
-  const [scoreTypeA, setScoreTypeA] = useState(0); // Frutos do Mar / Moquecas / Leve
-  const [scoreTypeB, setScoreTypeB] = useState(0); // Carnes / Brasa / Pratos da Casa
+  const [scoreTypeA, setScoreTypeA] = useState(0); // Seafood / Coastal / Moqueca
+  const [scoreTypeB, setScoreTypeB] = useState(0); // Meats / Charcoal Grill
   const [isFinished, setIsFinished] = useState(false);
 
   if (!isOpen) return null;
+
+  const currentQ = quizQuestions[currentStep] || quizQuestions[0];
 
   const handleSelectOption = (index: number) => {
     soundFx.play('click');
@@ -49,7 +33,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
       setScoreTypeB((prev) => prev + 1);
     }
 
-    if (currentStep + 1 < QUIZ_DATA.length) {
+    if (currentStep + 1 < quizQuestions.length) {
       setCurrentStep((prev) => prev + 1);
     } else {
       soundFx.play('success');
@@ -66,7 +50,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
   };
 
   const isSeafoodWinner = scoreTypeA >= scoreTypeB;
-  const progressPercent = ((currentStep + (isFinished ? 1 : 0)) / QUIZ_DATA.length) * 100;
+  const progressPercent = ((currentStep + (isFinished ? 1 : 0)) / quizQuestions.length) * 100;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fadeIn">
@@ -79,7 +63,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
             onClose();
           }}
           className="absolute top-4 right-4 p-2 text-[#A3B8C7] hover:text-white rounded-lg hover:bg-[#123b53] transition-colors"
-          aria-label="Fechar Quiz"
+          aria-label="Fechar"
         >
           <X className="w-5 h-5" />
         </button>
@@ -90,17 +74,17 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
             <div>
               <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#F4B41A] uppercase tracking-wider mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Quiz do Sabor</span>
+                <span>{t.quizTitle}</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold font-serif-heading text-[#FFFFFF]">
-                Descubra seu Prato Ideal
+                {t.quizSubtitle}
               </h2>
             </div>
 
             {/* Progress Bar */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-[11px] text-[#A3B8C7] font-mono">
-                <span>Etapa {currentStep + 1} de {QUIZ_DATA.length}</span>
+                <span>{t.quizQuestionOf} {currentStep + 1} / {quizQuestions.length}</span>
                 <span>{Math.round(progressPercent)}%</span>
               </div>
               <div className="w-full h-2.5 bg-[#123b53] rounded-full overflow-hidden border border-[#1b4865]">
@@ -114,13 +98,13 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
             {/* Question Text */}
             <div className="min-h-[70px] flex items-center justify-center">
               <p className="text-base sm:text-lg font-medium text-[#FFFFFF] leading-snug">
-                {QUIZ_DATA[currentStep].q}
+                {currentQ.q}
               </p>
             </div>
 
             {/* Options Buttons */}
             <div className="flex flex-col gap-3">
-              {QUIZ_DATA[currentStep].o.map((optionText, idx) => (
+              {currentQ.o.map((optionText, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
@@ -143,33 +127,20 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
 
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#F4B41A]">
-                Resultado Personalizado
+                {t.quizTitle}
               </span>
               <h2 className="text-2xl font-bold font-serif-heading text-[#FFFFFF] mt-1">
-                🎉 O seu Prato do Dia Ideal!
+                {isSeafoodWinner ? t.quizSeafoodResultTitle : t.quizMeatResultTitle}
               </h2>
             </div>
 
             <div className="p-5 rounded-xl bg-[#123b53] border-2 border-[#F4B41A]/30 text-left text-xs sm:text-sm text-[#D7E3EC] leading-relaxed space-y-2">
-              {isSeafoodWinner ? (
-                <>
-                  <p className="font-bold text-[#F4B41A] text-base">
-                    🦐 Camarão Catupiry & Moqueca de Peixe
-                  </p>
-                  <p>
-                    Com base nas suas escolhas, o seu prato ideal é a nossa deliciosa <strong>Moqueca em panela de barro</strong> ou o <strong>Camarão ao molho com Catupiry gratinado</strong>, acompanhado de arroz de castanha e purê de banana-da-terra! Perfeito para quem ama os sabores marcantes do mar alagoano.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="font-bold text-[#F4B41A] text-base">
-                    🥩 Costela Minga ao Bafo ou Picanha na Brasa
-                  </p>
-                  <p>
-                    O seu perfil pede robustez e sabor autêntico! O prato do dia ideal para você é a nossa <strong>Costela bovina cozida por 24h na manteiga de garrafa</strong> ou a <strong>Picanha na brasa</strong> com macaxeira frita bem dourada e farofa matuta. Suculência garantida!
-                  </p>
-                </>
-              )}
+              <p className="font-bold text-[#F4B41A] text-base">
+                {isSeafoodWinner ? `🦐 ${t.quizSeafoodResultDish}` : `🥩 ${t.quizMeatResultDish}`}
+              </p>
+              <p>
+                {isSeafoodWinner ? t.quizSeafoodResultDesc : t.quizMeatResultDesc}
+              </p>
             </div>
 
             {/* Action Buttons */}
@@ -183,7 +154,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#F4B41A] to-[#E5A912] text-[#0C202D] font-bold text-sm hover:from-[#F7C438] hover:to-[#F4B41A] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
               >
                 <Utensils className="w-4 h-4" />
-                <span>Ver Pratos Recomendados no Cardápio</span>
+                <span>{t.quizSeeDishInMenu}</span>
               </button>
 
               <a
@@ -194,7 +165,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 className="w-full py-3.5 px-4 rounded-xl bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-md"
               >
                 <Star className="w-4 h-4 fill-white" />
-                <span>⭐ Avaliar no Google (5.0 Estrelas)</span>
+                <span>⭐ Google Reviews (5.0)</span>
               </a>
 
               <a
@@ -205,7 +176,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-md"
               >
                 <Instagram className="w-4 h-4" />
-                <span>📸 Seguir no Instagram @divinagulafrances</span>
+                <span>📸 Instagram {RESTAURANT_INFO.instagram}</span>
               </a>
 
               <button
@@ -213,7 +184,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 className="w-full py-2 px-4 text-xs text-[#A3B8C7] hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Refazer o Quiz</span>
+                <span>{t.quizRetake}</span>
               </button>
             </div>
           </div>

@@ -10,12 +10,17 @@ import { GoogleReviewsSection } from './components/GoogleReviewsSection';
 import { FaqSection } from './components/FaqSection';
 import { TableOrderDrawer } from './components/TableOrderDrawer';
 import { Footer } from './components/Footer';
+import { ParticlesBackground } from './components/ParticlesBackground';
+import { IFoodSection } from './components/IFoodSection';
+import { LiveNotificationsToast } from './components/LiveNotificationsToast';
 import { MENU_CATEGORIES, MenuItem } from './data/menuData';
 import { OrderItem } from './types';
 import { ShoppingBag, Sparkles } from 'lucide-react';
 import { soundFx } from './utils/audio';
+import { useLanguage } from './context/LanguageContext';
 
 export default function App() {
+  const { t } = useLanguage();
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [isOrderDrawerOpen, setIsOrderDrawerOpen] = useState(false);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
@@ -161,7 +166,9 @@ export default function App() {
   }, [searchQuery, dietaryFilter]);
 
   return (
-    <div className="min-h-screen bg-[#0c202d] text-[#F8FAFC] flex flex-col font-sans selection:bg-[#F4B41A] selection:text-[#0C202D]">
+    <div className="min-h-screen bg-[#0c202d] text-[#F8FAFC] flex flex-col font-sans selection:bg-[#F4B41A] selection:text-[#0C202D] relative">
+      {/* Light Blue Particles Background */}
+      <ParticlesBackground />
       
       {/* 1. Header & Top Bar Navigation */}
       <Navbar
@@ -202,7 +209,7 @@ export default function App() {
         {(searchQuery || dietaryFilter !== 'all') && (
           <div className="p-4 rounded-xl bg-[#123b53] border-2 border-[#1b4865] flex items-center justify-between shadow-md">
             <div className="text-xs sm:text-sm text-[#D7E3EC]">
-              <span>Exibindo resultados para: </span>
+              <span>Resultados: </span>
               {searchQuery && <strong className="text-[#F4B41A]">"{searchQuery}" </strong>}
               {dietaryFilter !== 'all' && (
                 <span className="text-[#A3B8C7]">({dietaryFilter})</span>
@@ -214,9 +221,9 @@ export default function App() {
                 setSearchQuery('');
                 setDietaryFilter('all');
               }}
-              className="text-xs text-[#F4B41A] hover:underline font-bold"
+              className="text-xs text-[#F4B41A] hover:underline font-bold cursor-pointer"
             >
-              Limpar filtros
+              {t.clearFilters}
             </button>
           </div>
         )}
@@ -234,10 +241,10 @@ export default function App() {
         ) : (
           <div className="py-20 text-center space-y-3">
             <p className="text-lg text-[#FFFFFF] font-serif-heading">
-              Nenhum item encontrado para a sua busca.
+              {t.noDishesFound}
             </p>
             <p className="text-xs sm:text-sm text-[#A3B8C7]">
-              Tente buscar por "moqueca", "picanha", "camarão", "chopp" ou "sobremesa".
+              {t.searchPlaceholder}
             </p>
             <button
               onClick={() => {
@@ -247,7 +254,7 @@ export default function App() {
               }}
               className="mt-2 px-5 py-2.5 rounded-lg bg-[#F4B41A] text-[#0C202D] text-xs font-bold shadow-md hover:bg-[#F7C438] transition-colors cursor-pointer"
             >
-              Ver Cardápio Completo
+              {t.filterAll}
             </button>
           </div>
         )}
@@ -259,13 +266,13 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
           <div className="inline-flex items-center gap-2 text-xs font-bold text-[#F4B41A] uppercase tracking-wider">
             <Sparkles className="w-4 h-4" />
-            <span>Minigame & Quiz Interativo</span>
+            <span>{t.quizTitle}</span>
           </div>
           <h3 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#FFFFFF]">
-            Em dúvida do que pedir hoje?
+            {t.quizSubtitle}
           </h3>
           <p className="text-xs sm:text-sm text-[#D7E3EC] max-w-xl mx-auto leading-relaxed">
-            Responda 12 perguntinhas rápidas sobre a sua vibe na Praia do Francês e receba a recomendação perfeita de prato do dia!
+            {t.heroStory}
           </p>
           <button
             onClick={() => {
@@ -275,12 +282,15 @@ export default function App() {
             className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#F4B41A] to-[#E5A912] hover:from-[#F7C438] hover:to-[#F4B41A] text-[#0C202D] font-bold text-sm transition-all shadow-xl inline-flex items-center gap-2 cursor-pointer"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Iniciar Quiz do Sabor</span>
+            <span>{t.quizTitle}</span>
           </button>
         </div>
       </section>
 
-      {/* 7. Google 5.0 ⭐ Reviews & Rating Section */}
+      {/* 6.5 iFood Delivery Section (alternating photo and video in the same block) */}
+      <IFoodSection />
+
+      {/* 7. Google 5.0 ⭐ Reviews & Rating Section with Location Alternating Media + Interactive Map */}
       <GoogleReviewsSection />
 
       {/* 8. Frequently Asked Questions (FAQ - 10 Perguntas e Respostas) */}
@@ -288,6 +298,9 @@ export default function App() {
 
       {/* 9. Footer */}
       <Footer />
+
+      {/* Real-time Google Reviews and Order Notifications (Local Dining & iFood) with sound */}
+      <LiveNotificationsToast />
 
       {/* Floating Comanda Button for Fast Access */}
       {totalOrderCount > 0 && (
@@ -301,7 +314,7 @@ export default function App() {
             aria-label="Abrir comanda com itens"
           >
             <ShoppingBag className="w-5 h-5" />
-            <span>Ver Comanda ({totalOrderCount})</span>
+            <span>{t.navComanda} ({totalOrderCount})</span>
           </button>
         </div>
       )}

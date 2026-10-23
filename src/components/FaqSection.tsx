@@ -1,57 +1,10 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ChevronUp, Sparkles } from 'lucide-react';
-import { RESTAURANT_INFO } from '../data/menuData';
+import { HelpCircle, ChevronDown } from 'lucide-react';
 import { soundFx } from '../utils/audio';
-
-interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-const FAQ_LIST: FaqItem[] = [
-  {
-    question: "Onde o Divina Gula Francês está localizado?",
-    answer: `Estamos localizados na ${RESTAURANT_INFO.address}, em frente à famosa La Rue, no coração da Praia do Francês, Marechal Deodoro - AL.`
-  },
-  {
-    question: "Como faço para reservar uma mesa?",
-    answer: "Você pode fazer sua reserva de forma rápida e prática clicando no botão 'Reservas' no topo da página ou através do nosso WhatsApp oficial (82) 99999-9999."
-  },
-  {
-    question: "Quais são os dias e horários de funcionamento?",
-    answer: "Funcionamos de Terça a Quinta das 12h às 23h, Sexta e Sábado das 12h às 00h, e aos Domingos das 12h às 22h. Às segundas-feiras estamos fechados para descanso da equipe."
-  },
-  {
-    question: "O restaurante possui opções sem glúten?",
-    answer: "Sim! Temos excelentes opções como o famoso Bolinho de Camarão feito com massa de macaxeira, cervejas artesanais sem glúten (Praya e Amstel Ultra), além de pratos com mandioca e acompanhamentos seguros."
-  },
-  {
-    question: "Como funciona o Happy Hour?",
-    answer: "Nosso Happy Hour acontece de Terça a Sexta, das 16h às 19h, com preços especiais em Chopp Amstel (R$ 6,50), Chopp Heineken (R$ 8,90) e Caipiroska Tradicional (R$ 14,90)."
-  },
-  {
-    question: "O Divina Gula Francês é adequado para crianças (Menu Infantil)?",
-    answer: "Sim! Oferecemos o Menu Infantil com porções individuais equilibradas como Picadinho de Filé, Picadinho de Frango e Peixinho empanado com batatas fritas."
-  },
-  {
-    question: "Quais são as principais especialidades da casa?",
-    answer: "Nossos destaques incluem as Moquecas borbulhantes na panela de barro (Camarão, Peixe e Polvo), a Costela Minga cozida por 24h a 45h, o Atolado de Camarão e a Picanha na brasa."
-  },
-  {
-    question: "É permitido animais de estimação (Pet Friendly)?",
-    answer: "Sim, aceitamos pets de pequeno porte na nossa área externa voltada para a calçada e brisa da praia, com total conforto para você e seu companheiro."
-  },
-  {
-    question: "Quais formas de pagamento são aceitas?",
-    answer: "Aceitamos cartões de crédito e débito das principais bandeiras, Pix, dinheiro e pagamento via comanda digital direto no seu celular."
-  },
-  {
-    question: "Posso fazer pedidos para viagem ou delivery?",
-    answer: "Sim, você pode montar seu pedido em nossa comanda digital e enviar diretamente pelo WhatsApp para retirada no balcão ou entrega na região da Praia do Francês."
-  }
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export const FaqSection: React.FC = () => {
+  const { t, faqList } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleAccordion = (index: number) => {
@@ -66,18 +19,18 @@ export const FaqSection: React.FC = () => {
         <div className="text-center space-y-3 mb-12">
           <div className="inline-flex items-center gap-2 text-[#F4B41A] text-xs font-bold uppercase tracking-wider">
             <HelpCircle className="w-4 h-4" />
-            <span>Tire suas Dúvidas</span>
+            <span>{t.faqBadge}</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-bold font-serif-heading text-[#FFFFFF]">
-            Perguntas Frequentes (FAQ)
+            {t.faqTitle}
           </h2>
           <p className="text-xs sm:text-sm text-[#CAD8E2] max-w-xl mx-auto">
-            Tudo o que você precisa saber sobre o Divina Gula Francês, reservas, cardápio e funcionamento.
+            {t.faqSubtitle}
           </p>
         </div>
 
         <div className="space-y-3">
-          {FAQ_LIST.map((faq, index) => {
+          {faqList.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div

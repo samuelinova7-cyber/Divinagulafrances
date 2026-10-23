@@ -14,7 +14,7 @@ class SoundManager {
     }
   }
 
-  play(type: 'click' | 'success' | 'add' | 'pop') {
+  play(type: 'click' | 'success' | 'add' | 'pop' | 'notification') {
     try {
       this.initCtx();
       if (!this.audioCtx) return;
@@ -59,6 +59,15 @@ class SoundManager {
         gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
         osc.start(now);
         osc.stop(now + 0.09);
+      } else if (type === 'notification') {
+        // Crisp dual chime for real-time reviews & order notifications
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(659.25, now); // E5
+        osc.frequency.setValueAtTime(880, now + 0.1); // A5
+        gainNode.gain.setValueAtTime(0.14, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+        osc.start(now);
+        osc.stop(now + 0.32);
       }
     } catch {
       // Audio playback fails gracefully if user has not interacted or audio is blocked

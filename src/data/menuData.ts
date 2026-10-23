@@ -3,6 +3,12 @@ export const BRAND_ASSETS = {
   praya4x3Image: "https://res.cloudinary.com/gu3r4btn/image/upload/v1790880253/WhatsApp_Image_2026-10-01_at_3.22.12_PM_cq97go.jpg",
   happyHourImage: "https://res.cloudinary.com/gu3r4btn/image/upload/v1790880254/SnapInsta.to_830540599_18636797335040406_8022401376043101883_n_gwc9ue.jpg",
   heroVideoUrl: "https://res.cloudinary.com/gu3r4btn/video/upload/v1790880269/SnapInsta.to_AQOF0P2CMXpfNhKJac7VAW8No3ezsHcVvmqcwAoqVwYUap0RN08Cvx6QNazHZZbU_A3ug6L_olKP03IlzkquaMz8aD5L5AuK9bEgIAI_bzlvuv.mp4",
+  // iFood Section media (photo & video alternating)
+  ifoodImage: "https://res.cloudinary.com/hd1sahto/image/upload/v1792714147/WhatsApp_Image_2026-10-22_at_8.05.24_PM.jpg",
+  ifoodVideo: "https://res.cloudinary.com/hd1sahto/video/upload/v1792719167/WhatsApp_Video_2026-10-22_at_9.40.16_PM.mp4",
+  // Location Section media (video & photo alternating)
+  locationVideo: "https://res.cloudinary.com/hd1sahto/video/upload/v1792719046/WhatsApp_Video_2026-10-22_at_10.23.50_PM_1.mp4",
+  locationImage: "https://res.cloudinary.com/hd1sahto/image/upload/v1792715028/WhatsApp_Image_2026-10-22_at_8.05.23_PM_1.jpg",
   instagramVideos: [
     {
       id: "ig-v1",
@@ -79,8 +85,9 @@ export const RESTAURANT_INFO = {
   locationRef: "Em frente à La Rue, Praia do Francês",
   googleMapsUrl: "https://maps.google.com/?q=Divina+Gula+Frances+Praia+do+Frances+Alagoas",
   googleReviewUrl: "https://g.co/kgs/sua-avaliacao-aqui",
+  ifoodUrl: "https://www.ifood.com.br/delivery/marechal-deodoro-al/divina-gula-frances-praia-do-frances",
   whatsapp: "5582999999999",
-  whatsappUrl: "https://wa.me/5582999999999?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20uma%20reserva%20no%20Divina%20Gula%20Franc%C3%AAs.",
+  whatsappUrl: "https://wa.me/5582999999999?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20reserva%20no%20Divina%20Gula%20Franc%C3%AAs.",
   hours: [
     { days: "Terça a Quinta", hours: "12h às 23h" },
     { days: "Sexta e Sábado", hours: "12h às 00h" },

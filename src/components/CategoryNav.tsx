@@ -2,6 +2,7 @@ import React from 'react';
 import { Search, X, Filter } from 'lucide-react';
 import { MenuCategory } from '../data/menuData';
 import { soundFx } from '../utils/audio';
+import { useLanguage } from '../context/LanguageContext';
 
 interface CategoryNavProps {
   categories: MenuCategory[];
@@ -22,14 +23,16 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
   dietaryFilter,
   onDietaryFilterChange,
 }) => {
+  const { t, getCategoryLocalized } = useLanguage();
+
   const filterChips = [
-    { id: 'all', label: 'Todo o Cardápio' },
-    { id: 'frutos-mar', label: 'Frutos do Mar' },
-    { id: 'carnes', label: 'Carnes & Brasa' },
-    { id: 'petiscos', label: 'Petiscos & Entradas' },
-    { id: 'bebidas', label: 'Drinks & Cervejas' },
-    { id: 'sobremesas', label: 'Sobremesas' },
-    { id: 'sem-gluten', label: 'Sem Glúten' },
+    { id: 'all', label: t.filterAll },
+    { id: 'frutos-mar', label: t.filterSeafood },
+    { id: 'carnes', label: t.filterMeat },
+    { id: 'petiscos', label: t.filterSnacks },
+    { id: 'bebidas', label: t.filterDrinks },
+    { id: 'sobremesas', label: t.filterDesserts },
+    { id: 'sem-gluten', label: t.filterGlutenFreeBadge },
   ];
 
   return (
@@ -46,7 +49,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
               type="text"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              placeholder="Buscar no cardápio (ex: camarão, picanha, moqueca, chopp)..."
+              placeholder={t.searchPlaceholder}
               className="w-full pl-9.5 pr-8 py-2 bg-[#123b53] border border-[#1b4865] rounded-lg text-xs sm:text-sm text-[#FFFFFF] placeholder-[#7A96A8] focus:outline-none focus:border-[#F4B41A] transition-colors"
             />
             {searchQuery && (
@@ -96,6 +99,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
         {!searchQuery && dietaryFilter === 'all' && (
           <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-1 scrollbar-none text-xs">
             {categories.map((cat) => {
+              const localized = getCategoryLocalized(cat);
               const isActive = activeCategoryId === cat.id;
               return (
                 <button
@@ -122,7 +126,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                       : 'bg-[#0f2a3a] text-[#CAD8E2] hover:text-white hover:bg-[#123b53] border border-[#1b4865]'
                   }`}
                 >
-                  <span>{cat.title}</span>
+                  <span>{localized.title}</span>
                   <span className="text-[10px] text-[#7A96A8] font-mono tabular-nums">
                     ({cat.items.length})
                   </span>

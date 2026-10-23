@@ -3,6 +3,7 @@ import { X, Trash2, Plus, Minus, Send, Copy, Check, Users, Receipt } from 'lucid
 import { OrderItem } from '../types';
 import { RESTAURANT_INFO } from '../data/menuData';
 import { soundFx } from '../utils/audio';
+import { useLanguage } from '../context/LanguageContext';
 
 interface TableOrderDrawerProps {
   isOpen: boolean;
@@ -21,6 +22,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
   onRemoveItem,
   onClearOrder,
 }) => {
+  const { t } = useLanguage();
   const [tableNumber, setTableNumber] = useState('');
   const [customerName, setCustomerName] = useState('');
   const [notes, setNotes] = useState('');
@@ -80,10 +82,10 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
             <Receipt className="w-5 h-5 text-[#F4B41A]" />
             <div>
               <h3 className="font-bold text-base text-[#FFFFFF] font-serif-heading">
-                Minha Comanda / Mesa
+                {t.orderDrawerTitle}
               </h3>
               <p className="text-[11px] text-[#A3B8C7]">
-                {orderItems.length} {orderItems.length === 1 ? 'item selecionado' : 'itens selecionados'}
+                {orderItems.length} {orderItems.length === 1 ? 'item' : 'itens'}
               </p>
             </div>
           </div>
@@ -93,7 +95,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
               onClose();
             }}
             className="p-2 text-[#A3B8C7] hover:text-white rounded-lg hover:bg-[#123b53]"
-            aria-label="Fechar comanda"
+            aria-label="Fechar"
           >
             <X className="w-5 h-5" />
           </button>
@@ -106,9 +108,9 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
               <div className="w-12 h-12 mx-auto rounded-full bg-[#123b53] text-[#7A96A8] flex items-center justify-center border border-[#1b4865]">
                 <Receipt className="w-6 h-6" />
               </div>
-              <p className="text-sm text-[#CAD8E2]">Sua comanda ainda está vazia.</p>
+              <p className="text-sm text-[#CAD8E2]">{t.orderEmptyTitle}</p>
               <p className="text-xs text-[#7A96A8]">
-                Navegue pelas seções do cardápio e clique em <strong className="text-[#F4B41A]">Pedir</strong> para adicionar petiscos, pratos ou bebidas!
+                {t.orderEmptySubtitle}
               </p>
             </div>
           ) : (
@@ -157,7 +159,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                           onRemoveItem(oi.item.id);
                         }}
                         className="p-1.5 text-[#7A96A8] hover:text-red-400"
-                        title="Remover item"
+                        title={t.orderClear}
                         aria-label="Remover item da comanda"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -172,25 +174,25 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <label className="text-[11px] text-[#A3B8C7] font-medium block mb-1">
-                      Mesa / Local
+                      {t.orderTableInputLabel}
                     </label>
                     <input
                       type="text"
                       value={tableNumber}
                       onChange={(e) => setTableNumber(e.target.value)}
-                      placeholder="Ex: Mesa 08 / Deck"
+                      placeholder={t.orderTableInputPlaceholder}
                       className="w-full px-3 py-1.5 bg-[#123b53] border border-[#1b4865] rounded-lg text-xs text-[#FFFFFF] placeholder-[#7A96A8] focus:outline-none focus:border-[#F4B41A]"
                     />
                   </div>
                   <div>
                     <label className="text-[11px] text-[#A3B8C7] font-medium block mb-1">
-                      Seu Nome
+                      {t.orderNameInputLabel}
                     </label>
                     <input
                       type="text"
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
-                      placeholder="Ex: Carlos"
+                      placeholder={t.orderNameInputPlaceholder}
                       className="w-full px-3 py-1.5 bg-[#123b53] border border-[#1b4865] rounded-lg text-xs text-[#FFFFFF] placeholder-[#7A96A8] focus:outline-none focus:border-[#F4B41A]"
                     />
                   </div>
@@ -198,13 +200,13 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
 
                 <div>
                   <label className="text-[11px] text-[#A3B8C7] font-medium block mb-1">
-                    Observações ao Garçom / Cozinha
+                    {t.orderNotesInputLabel}
                   </label>
                   <input
                     type="text"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    placeholder="Ex: Ponto da carne, sem cebola, limão à parte..."
+                    placeholder={t.orderNotesInputPlaceholder}
                     className="w-full px-3 py-1.5 bg-[#123b53] border border-[#1b4865] rounded-lg text-xs text-[#FFFFFF] placeholder-[#7A96A8] focus:outline-none focus:border-[#F4B41A]"
                   />
                 </div>
@@ -215,7 +217,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                 <div className="flex items-center justify-between text-xs">
                   <span className="flex items-center gap-1.5 text-[#CAD8E2]">
                     <Users className="w-3.5 h-3.5 text-[#F4B41A]" />
-                    <span>Dividir a conta entre:</span>
+                    <span>{t.orderSplitBillLabel}</span>
                   </span>
                   <div className="flex items-center gap-1">
                     <button
@@ -237,7 +239,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                 </div>
                 {peopleCount > 1 && (
                   <div className="text-[11px] text-[#CAD8E2] flex justify-between pt-1 border-t border-[#1b4865]">
-                    <span>Fica para cada pessoa:</span>
+                    <span>{t.orderPerPerson}:</span>
                     <span className="font-bold text-[#FFFFFF] font-mono tabular-nums">
                       R$ {perPerson.toFixed(2).replace('.', ',')}
                     </span>
@@ -253,7 +255,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
           <div className="p-5 border-t border-[#1b4865] bg-[#0d222e] space-y-3.5">
             <div className="space-y-1.5 text-xs text-[#CAD8E2]">
               <div className="flex justify-between">
-                <span>Subtotal</span>
+                <span>{t.orderSubtotal}</span>
                 <span className="font-mono tabular-nums text-[#FFFFFF]">
                   R$ {subtotal.toFixed(2).replace('.', ',')}
                 </span>
@@ -266,14 +268,14 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                     onChange={(e) => setIncludeServiceFee(e.target.checked)}
                     className="rounded border-[#1b4865] text-[#F4B41A] focus:ring-0"
                   />
-                  <span>Taxa de Serviço Opcional (10%)</span>
+                  <span>{t.orderServiceFeeLabel}</span>
                 </label>
                 <span className="font-mono tabular-nums text-[#FFFFFF]">
                   R$ {serviceFee.toFixed(2).replace('.', ',')}
                 </span>
               </div>
               <div className="flex justify-between text-base font-bold text-[#FFFFFF] pt-2 border-t border-[#1b4865]">
-                <span>Total Estimado</span>
+                <span>{t.orderTotal}</span>
                 <span className="text-[#F4B41A] font-mono tabular-nums">
                   R$ {total.toFixed(2).replace('.', ',')}
                 </span>
@@ -286,7 +288,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                 className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#25D366] to-[#1EBE5D] hover:from-[#2ce06f] hover:to-[#22cf66] text-black font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer"
               >
                 <Send className="w-4 h-4" />
-                <span>Enviar Pedido pelo WhatsApp</span>
+                <span>{t.orderSendWhatsApp}</span>
               </button>
 
               <div className="grid grid-cols-2 gap-2">
@@ -297,12 +299,12 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                   {copied ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-emerald-400">Copiado!</span>
+                      <span className="text-emerald-400">{t.orderCopied}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copiar Texto</span>
+                      <span>{t.orderCopyText}</span>
                     </>
                   )}
                 </button>
@@ -315,7 +317,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                   className="py-2.5 px-3 rounded-lg bg-[#123b53] hover:bg-red-950/40 text-[#A3B8C7] hover:text-red-300 text-xs font-semibold border border-[#1b4865] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
-                  <span>Limpar Tudo</span>
+                  <span>{t.orderClear}</span>
                 </button>
               </div>
             </div>

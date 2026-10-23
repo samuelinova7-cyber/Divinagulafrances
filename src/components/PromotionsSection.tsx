@@ -2,12 +2,14 @@ import React from 'react';
 import { Sparkles, Plus, Clock, Check } from 'lucide-react';
 import { RESTAURANT_INFO, MenuItem, BRAND_ASSETS } from '../data/menuData';
 import { soundFx } from '../utils/audio';
+import { useLanguage } from '../context/LanguageContext';
 
 interface PromotionsSectionProps {
   onAddItem: (item: MenuItem) => void;
 }
 
 export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem }) => {
+  const { t } = useLanguage();
   const [addedIds, setAddedIds] = React.useState<Record<string, boolean>>({});
 
   const handleAdd = (item: MenuItem) => {
@@ -22,18 +24,18 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
   const promoItems: MenuItem[] = [
     {
       id: "praya-exp",
-      name: "Praya Experience",
+      name: t.promoPrayaExpTitle,
       price: 55.00,
-      description: "2 Cervejas Prayas bem geladas + Bolinho de Camarão (crocante por fora, macio por dentro, feito com massa de macaxeira sem glúten e catupiry).",
-      tags: ["Combo Especial", "Sem Glúten", "Favorito"],
+      description: t.promoPrayaExpDesc,
+      tags: [t.tagSpecialCombo, t.tagGlutenFree, t.tagFavorite],
       isHighlight: true,
     },
     {
       id: "praya-4x3",
-      name: "Promoção Praya 4x3",
+      name: t.promoPraya4x3Title,
       price: 37.50,
-      description: "Na compra de 3 cervejas artesanais Praya puro malte (sem glúten), a 4ª unidade sai 100% por nossa conta!",
-      tags: ["Cerveja Gelada", "Pague 3 Leve 4"],
+      description: t.promoPraya4x3Desc,
+      tags: [t.tagColdBeer, t.tagBuy3Get4],
       isHighlight: true,
     }
   ];
@@ -47,14 +49,14 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
           <div>
             <div className="flex items-center gap-2 text-[#F4B41A] text-xs font-bold uppercase tracking-wider mb-1.5">
               <Sparkles className="w-4 h-4" />
-              <span>Destaques da Praia</span>
+              <span>{t.promoBadge}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#FFFFFF]">
-              Promoções & Happy Hour
+              {t.promoTitle}
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#CAD8E2] max-w-md">
-            Condições especiais para aproveitar a brisa do mar com cerveja gelada, petiscos artesanais e drinks selecionados.
+            {t.promoDesc}
           </p>
         </div>
 
@@ -66,9 +68,9 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-bold text-[#F4B41A] uppercase tracking-wider">
-                  Combo Exclusivo
+                  {t.tagSpecialCombo}
                 </span>
-                <span className="text-xs text-[#A3B8C7] font-medium">Sem Glúten</span>
+                <span className="text-xs text-[#A3B8C7] font-medium">{t.tagGlutenFree}</span>
               </div>
               <div>
                 <h3 className="text-xl font-bold text-[#FFFFFF] font-serif-heading">
@@ -82,24 +84,24 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
 
             <div className="mt-6 pt-4 border-t border-[#1b4865] flex items-center justify-between">
               <div>
-                <span className="text-[11px] text-[#A3B8C7] block">Valor do Combo</span>
+                <span className="text-[11px] text-[#A3B8C7] block">Combo</span>
                 <span className="text-xl font-bold text-[#F4B41A] font-mono tabular-nums">
                   R$ 55,00
                 </span>
               </div>
               <button
                 onClick={() => handleAdd(promoItems[0])}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#F4B41A] hover:bg-[#F7C438] text-[#0C202D] font-bold text-xs transition-all cursor-pointer shadow-sm"
+                className="btn-red-blur flex items-center gap-1.5 px-4 py-2 rounded-xl text-white font-bold text-xs transition-all cursor-pointer shadow-md active:scale-95"
               >
                 {addedIds[promoItems[0].id] ? (
                   <>
                     <Check className="w-3.5 h-3.5" />
-                    <span>Adicionado</span>
+                    <span>{t.addedToOrder}</span>
                   </>
                 ) : (
                   <>
                     <Plus className="w-3.5 h-3.5" />
-                    <span>Pedir Combo</span>
+                    <span>{t.addToOrder}</span>
                   </>
                 )}
               </button>
@@ -121,9 +123,9 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold text-[#F4B41A] uppercase tracking-wider">
-                    Promoção Oficial
+                    {t.tagColdBeer}
                   </span>
-                  <span className="text-xs text-[#A3B8C7] font-medium">Leve 4 Pague 3</span>
+                  <span className="text-xs text-[#A3B8C7] font-medium">{t.tagBuy3Get4}</span>
                 </div>
                 <h3 className="text-xl font-bold text-[#FFFFFF] font-serif-heading">
                   {promoItems[1].name}
@@ -135,24 +137,24 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
 
               <div className="pt-4 border-t border-[#1b4865] flex items-center justify-between">
                 <div>
-                  <span className="text-[11px] text-[#A3B8C7] block">Valor 4 Garrafas</span>
+                  <span className="text-[11px] text-[#A3B8C7] block">4 Unid.</span>
                   <span className="text-xl font-bold text-[#F4B41A] font-mono tabular-nums">
                     R$ 37,50
                   </span>
                 </div>
                 <button
                   onClick={() => handleAdd(promoItems[1])}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#F4B41A] hover:bg-[#F7C438] text-[#0C202D] font-bold text-xs transition-all cursor-pointer shadow-sm"
+                  className="btn-red-blur flex items-center gap-1.5 px-4 py-2 rounded-xl text-white font-bold text-xs transition-all cursor-pointer shadow-md active:scale-95"
                 >
                   {addedIds[promoItems[1].id] ? (
                     <>
                       <Check className="w-3.5 h-3.5" />
-                      <span>Adicionado</span>
+                      <span>{t.addedToOrder}</span>
                     </>
                   ) : (
                     <>
                       <Plus className="w-3.5 h-3.5" />
-                      <span>Pedir 4x3</span>
+                      <span>{t.addToOrder}</span>
                     </>
                   )}
                 </button>
@@ -178,7 +180,7 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
                   <span>{RESTAURANT_INFO.happyHour.days} · {RESTAURANT_INFO.happyHour.time}</span>
                 </div>
                 <h3 className="text-xl font-bold text-[#FFFFFF] font-serif-heading">
-                  Happy Hour Divino
+                  Happy Hour
                 </h3>
                 <ul className="space-y-2 pt-1 text-xs sm:text-sm">
                   {RESTAURANT_INFO.happyHour.deals.map((deal, idx) => (
@@ -193,7 +195,7 @@ export const PromotionsSection: React.FC<PromotionsSectionProps> = ({ onAddItem 
               </div>
               
               <div className="pt-2 text-[11px] text-[#A3B8C7] italic">
-                * Preços válidos exclusivamente durante o horário do Happy Hour.
+                * {t.heroHappyHourTitle} {t.heroHappyHourDesc}
               </div>
             </div>
           </div>
