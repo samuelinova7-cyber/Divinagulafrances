@@ -2,19 +2,19 @@ export const BRAND_ASSETS = {
   logoUrl: "https://res.cloudinary.com/gu3r4btn/image/upload/v1790880258/WhatsApp_Image_2026-10-01_at_3.22.12_PM_1_nwjoxi.jpg",
   praya4x3Image: "https://res.cloudinary.com/gu3r4btn/image/upload/v1790880253/WhatsApp_Image_2026-10-01_at_3.22.12_PM_cq97go.jpg",
   happyHourImage: "https://res.cloudinary.com/gu3r4btn/image/upload/v1790880254/SnapInsta.to_830540599_18636797335040406_8022401376043101883_n_gwc9ue.jpg",
-  heroVideoUrl: "https://res.cloudinary.com/gu3r4btn/video/upload/v1790880269/SnapInsta.to_AQOF0P2CMXpfNhKJac7VAW8No3ezsHcVvmqcwAoqVwYUap0RN08Cvx6QNazHZZbU_A3ug6L_olKP03IlzkquaMz8aD5L5AuK9bEgIAI_bzlvuv.mp4",
+  heroVideoUrl: "https://res.cloudinary.com/hd1sahto/video/upload/v1792791366/Gold_shimmer_website_hero_animation_20261023183344.mp4",
   // iFood Section media (photo & video alternating)
   ifoodImage: "https://res.cloudinary.com/hd1sahto/image/upload/v1792714147/WhatsApp_Image_2026-10-22_at_8.05.24_PM.jpg",
   ifoodVideo: "https://res.cloudinary.com/hd1sahto/video/upload/v1792719167/WhatsApp_Video_2026-10-22_at_9.40.16_PM.mp4",
-  // Location Section media (video & photo alternating)
-  locationVideo: "https://res.cloudinary.com/hd1sahto/video/upload/v1792719046/WhatsApp_Video_2026-10-22_at_10.23.50_PM_1.mp4",
+  // Location & Reviews Section media (video & photo alternating)
+  locationVideo: "https://res.cloudinary.com/hd1sahto/video/upload/v1792721082/WhatsApp_Video_2026-10-22_at_9.40.16_PM_1.mp4",
   locationImage: "https://res.cloudinary.com/hd1sahto/image/upload/v1792715028/WhatsApp_Image_2026-10-22_at_8.05.23_PM_1.jpg",
   instagramVideos: [
     {
       id: "ig-v1",
-      videoUrl: "https://res.cloudinary.com/gu3r4btn/video/upload/v1790880255/SnapInsta.to_AQNm7uOHhvqnDsSEbSNrj8KWOZScqbXmM6yXSx5z2CC-HEFYnJ7DQV0BcMhTLNqSsEd8WDzVx3gTqC1jqFLBBGfIaTehsrVQnletkgY_wjclgp.mp4",
-      caption: "Brisa da Praia do Francês e petiscos irresistíveis no Divina Gula. 🌊✨",
-      likes: "842",
+      videoUrl: "https://res.cloudinary.com/hd1sahto/video/upload/v1792721082/WhatsApp_Video_2026-10-22_at_9.40.16_PM_1.mp4",
+      caption: "Brisa da Praia do Francês e gastronomia inigualável no Divina Gula. 🌊✨",
+      likes: "1.4k",
     },
     {
       id: "ig-v2",
@@ -151,6 +151,117 @@ export const MENU_CATEGORIES: MenuCategory[] = [
         price: 14.90,
         description: "Válido de Terça a Sexta das 16h às 19h. Feita com frutas frescas e vodka nacional.",
         tags: ["Happy Hour (16h-19h)"],
+      }
+    ]
+  },
+  {
+    id: "executivo",
+    title: "Cardápio Executivo",
+    subtitle: "1 Proteína + até 3 Acompanhamentos + Cortesia da Casa",
+    iconName: "Utensils",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-sizzling-meat-steaks-on-a-charcoal-grill-42691-large.mp4",
+    fallbackImage: "/src/assets/images/dish_picanha_brasa_1790876295398.jpg",
+    description: "Experiência executiva em 3 etapas com cortesia de mix de folhas e entrada do chef.",
+    servingInfo: "Individual",
+    items: [
+      {
+        id: "exec-frango-grelhado",
+        name: "Peito de frango grelhado na brasa",
+        price: 36.90,
+        description: "Peito de frango suculento marinado em ervas frescas e grelhado no carvão. Escolha até 3 acompanhamentos + cortesia de mix de folhas e entrada do chef.",
+        tags: ["Executivo", "Na Brasa"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-isquinhas-frango",
+        name: "Isquinhas de frango crocante",
+        price: 36.90,
+        description: "Tiras selecionadas de frango empanadas com crosta dourada e sequinha. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Crocante"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-pernil-acebolado",
+        name: "Bife de pernil acebolado",
+        price: 36.90,
+        description: "Corte de pernil macio grelhado com cebolas caramelizadas no ponto. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Suíno"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-moqueca-banana",
+        name: "Moqueca de banana da terra (vegetariano)",
+        price: 36.90,
+        description: "Receita aromática com leite de coco artesanal, dendê suave e banana da terra doce. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Vegetariano"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-tilapia-grelhada",
+        name: "Filé de tilápia grelhado",
+        price: 48.50,
+        description: "Filé de tilápia fresco selado na chapa com azeite de oliva e raspas de limão. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Peixe"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-tilapia-crosta",
+        name: "Tilápia na crosta",
+        price: 48.50,
+        description: "Filé alto de tilápia coberto com crosta crocante de ervas e queijo dourado. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Mais Pedido"],
+        portion: "1 Pessoa",
+        isHighlight: true
+      },
+      {
+        id: "exec-carne-sol-acebolada",
+        name: "Carne de sol acebolada",
+        price: 48.50,
+        description: "Carne de sol curada artesanalmente na casa, dourada na manteiga de garrafa. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Regional"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-file-mignon",
+        name: "Filé mignon grelhado",
+        price: 58.90,
+        description: "Medalhão de filé mignon super macio grelhado ao ponto de sua preferência. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Corte Nobre"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-bobo-camarao",
+        name: "Bobó de camarão",
+        price: 62.50,
+        description: "Creme aveludado de macaxeira com camarões graúdos, leite de coco e coentro fresco. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Frutos do Mar"],
+        portion: "1 Pessoa",
+        isHighlight: true
+      },
+      {
+        id: "exec-salmao-grelhado",
+        name: "Filé de salmão grelhado",
+        price: 69.90,
+        description: "Salmão fresco com pele crocante, servido suculento e macio por dentro. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Salmão"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-robalo-grelhado",
+        name: "Filé de robalo grelhado",
+        price: 75.80,
+        description: "O nobre robalo dos mares alagoanos grelhado com azeite de ervas e flor de sal. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Robalo"],
+        portion: "1 Pessoa"
+      },
+      {
+        id: "exec-picanha-brasa",
+        name: "Picanha importada na brasa",
+        price: 75.80,
+        description: "Fatias nobres de picanha importada com capa de gordura perfeita, seladas no fogo forte. Escolha até 3 acompanhamentos + cortesia da casa.",
+        tags: ["Executivo", "Picanha Nobre"],
+        portion: "1 Pessoa",
+        isHighlight: true
       }
     ]
   },

@@ -40,7 +40,7 @@ const IFOOD_ORDERS = [
 export const LiveNotificationsToast: React.FC = () => {
   const { t } = useLanguage();
   const [currentNotification, setCurrentNotification] = useState<LiveNotification | null>(null);
-  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [soundEnabled, setSoundEnabled] = useState(false);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -57,7 +57,7 @@ export const LiveNotificationsToast: React.FC = () => {
           type: 'review',
           title: t.toastGoogleReview,
           subtitle: randomReview.author,
-          details: `"${randomReview.text.slice(0, 95)}..."`,
+          details: `"${randomReview.text.slice(0, 75)}..."`,
           timeAgo: t.toastJustNow,
           author: randomReview.author,
           rating: randomReview.rating || 5,
@@ -88,22 +88,23 @@ export const LiveNotificationsToast: React.FC = () => {
 
       setCurrentNotification(newEvent);
 
-      // Play chime sound effect
+      // Play soft chime sound effect if user enabled it
       if (soundEnabled) {
         soundFx.play('notification');
       }
 
-      // Hide toast after 6.5s
+      // Hide toast after 4.2s (discreet, doesn't linger)
       setTimeout(() => {
         setCurrentNotification((prev) => (prev?.id === newEvent.id ? null : prev));
-      }, 6500);
+      }, 4200);
 
-      // Schedule next event in 12-20s
-      const nextDelay = 12000 + Math.random() * 8000;
+      // Schedule next event in 30-50s (much longer, less invasive interval)
+      const nextDelay = 30000 + Math.random() * 20000;
       timeoutId = setTimeout(showRandomEvent, nextDelay);
     };
 
-    const initialTimer = setTimeout(showRandomEvent, 4000);
+    // Initial wait of 18s before first notification appears
+    const initialTimer = setTimeout(showRandomEvent, 18000);
 
     return () => {
       clearTimeout(initialTimer);
@@ -116,50 +117,40 @@ export const LiveNotificationsToast: React.FC = () => {
   return (
     <aside
       aria-label="Notificações em tempo real do restaurante"
-      className="fixed bottom-20 left-4 sm:left-6 z-50 max-w-sm sm:max-w-md w-full animate-in fade-in slide-in-from-bottom-5 duration-300 pointer-events-auto"
+      className="fixed bottom-4 left-4 z-40 max-w-[280px] sm:max-w-[320px] w-full animate-in fade-in slide-in-from-bottom-3 duration-200 pointer-events-auto"
     >
-      <div className="p-4 rounded-2xl bg-[#0d222e]/95 backdrop-blur-xl border-2 border-[#1b4865] shadow-2xl relative overflow-hidden group hover:border-[#F4B41A]/60 transition-all">
-        {/* Glow ambient background based on notification type */}
-        <div
-          className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl pointer-events-none opacity-20 ${
-            currentNotification.type === 'ifood_order'
-              ? 'bg-red-500'
-              : currentNotification.type === 'review'
-              ? 'bg-blue-400'
-              : 'bg-[#F4B41A]'
-          }`}
-        />
-
-        <div className="flex items-start gap-3.5 relative z-10">
-          {/* Leading Icon Badge */}
+      <div className="p-2.5 sm:p-3 rounded-xl bg-[#091822]/95 backdrop-blur-md border border-[#1b4865] shadow-lg relative overflow-hidden transition-all hover:border-[#F4B41A]/50">
+        
+        <div className="flex items-center gap-2.5 relative z-10">
+          {/* Leading Icon Badge - Compact */}
           <div
-            className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-md ${
+            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm ${
               currentNotification.type === 'ifood_order'
-                ? 'bg-[#EA1D2C] text-white shadow-red-900/40'
+                ? 'bg-[#EA1D2C] text-white'
                 : currentNotification.type === 'review'
-                ? 'bg-[#4285F4] text-white shadow-blue-900/40'
-                : 'bg-[#F4B41A] text-[#0C202D] shadow-amber-900/40'
+                ? 'bg-[#4285F4] text-white'
+                : 'bg-[#F4B41A] text-[#0C202D]'
             }`}
           >
-            {currentNotification.type === 'ifood_order' && <Bike className="w-5 h-5 animate-bounce" />}
-            {currentNotification.type === 'review' && <Star className="w-5 h-5 fill-white" />}
-            {currentNotification.type === 'local_order' && <Utensils className="w-5 h-5" />}
+            {currentNotification.type === 'ifood_order' && <Bike className="w-4 h-4" />}
+            {currentNotification.type === 'review' && <Star className="w-4 h-4 fill-white" />}
+            {currentNotification.type === 'local_order' && <Utensils className="w-4 h-4" />}
           </div>
 
-          {/* Details */}
-          <div className="flex-1 min-w-0 pr-6">
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-black uppercase tracking-wider text-[#F4B41A]">
+          {/* Details - Compact & Truncated */}
+          <div className="flex-1 min-w-0 pr-4">
+            <div className="flex items-center gap-1.5 leading-none">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#F4B41A]">
                 {currentNotification.title}
               </span>
-              <span className="text-[10px] text-[#A3B8C7]">· {currentNotification.timeAgo}</span>
+              <span className="text-[9px] text-[#7A96A8]">· {currentNotification.timeAgo}</span>
             </div>
 
-            <p className="text-xs font-bold text-white truncate mt-0.5">
+            <p className="text-[11px] font-bold text-white truncate mt-0.5">
               {currentNotification.subtitle}
             </p>
 
-            <p className="text-xs text-[#CAD8E2] line-clamp-2 mt-0.5 leading-snug">
+            <p className="text-[10px] text-[#CAD8E2] truncate mt-0.5 leading-tight">
               {currentNotification.details}
             </p>
           </div>
@@ -170,29 +161,13 @@ export const LiveNotificationsToast: React.FC = () => {
               soundFx.play('click');
               setCurrentNotification(null);
             }}
-            className="absolute top-3 right-3 p-1 rounded-lg text-[#7A96A8] hover:text-white hover:bg-[#123b53] transition-colors cursor-pointer"
+            className="p-1 rounded text-[#7A96A8] hover:text-white transition-colors cursor-pointer shrink-0"
             aria-label="Fechar notificação"
           >
-            <X className="w-4 h-4" />
+            <X className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* Subtle audio mute toggle indicator */}
-        <div className="mt-2.5 pt-2 border-t border-[#1b4865]/60 flex items-center justify-between text-[10px] text-[#7A96A8]">
-          <span className="flex items-center gap-1">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Feed ao vivo · Divina Gula</span>
-          </span>
-          <button
-            onClick={() => {
-              soundFx.play('click');
-              setSoundEnabled(!soundEnabled);
-            }}
-            className="hover:text-white cursor-pointer transition-colors"
-          >
-            {soundEnabled ? '🔔 Som ativado' : '🔕 Som mudo'}
-          </button>
-        </div>
       </div>
     </aside>
   );

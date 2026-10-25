@@ -22,6 +22,7 @@ interface CategoryTranslation {
 const CATEGORY_TRANSLATIONS: Record<Language, Record<string, CategoryTranslation>> = {
   pt: {
     'promocoes': { title: 'Promoções & Destaques', subtitle: 'Ofertas imperdíveis e combos selecionados', description: 'Combos especiais da cervejaria Praya e condições exclusivas para brindar na praia.' },
+    'executivo': { title: 'Cardápio Executivo', subtitle: '1 Proteína + até 3 Acompanhamentos + Cortesia', description: 'Experiência executiva em 3 etapas com cortesia de mix de folhas e entrada do chef.', servingInfo: 'Individual' },
     'entradinhas': { title: '1. Entradinhas', subtitle: 'Para abrir o apetite e partilhar na brisa', description: 'Caldinhos quentinhos, empanadas caseiras, pastéis estaladiços e espetinhos suculentos.' },
     'petiscos': { title: '2. Petiscos', subtitle: 'Porções generosas para compartilhar com amigos', description: 'Carne de sol maturada, atolados no purê de macaxeira, camarões gigantes e carpaccio autoral.' },
     'frutos-do-mar': { title: '3. Frutos do Mar', subtitle: 'Frescor dos mares alagoanos preparados com maestria', description: 'Robalo grelhado, arrozes de frutos do mar, salmão ao molho de jabuticaba e crostas de castanha.', servingInfo: 'Serve 02 a 03 Pessoas' },
@@ -37,6 +38,7 @@ const CATEGORY_TRANSLATIONS: Record<Language, Record<string, CategoryTranslation
   },
   es: {
     'promocoes': { title: 'Promociones & Destacados', subtitle: 'Ofertas irresistibles y combos seleccionados', description: 'Combos especiales de cerveza artesanal Praya y condiciones exclusivas para brindar en la playa.' },
+    'executivo': { title: 'Menú Ejecutivo', subtitle: '1 Proteína + hasta 3 Guarniciones + Cortesía', description: 'Experiencia ejecutiva en 3 pasos con ensalada verde y aperitivo del chef de cortesía.', servingInfo: 'Individual' },
     'entradinhas': { title: '1. Entrantes y Tapas', subtitle: 'Para abrir el apetito con la brisa del mar', description: 'Caldos calientes, empanadas caseras, pasteles crujientes y brochetas jugosas.' },
     'petiscos': { title: '2. Picoteo para Compartir', subtitle: 'Porciones generosas para disfrutar entre amigos', description: 'Carne deshebrada curada, puré cremoso de yuca gratinado, camarones gigantes y carpaccio artesanal.' },
     'frutos-do-mar': { title: '3. Mariscos & Pescados', subtitle: 'La frescura del mar de Alagoas preparada con maestría', description: 'Róbalo a la plancha, arroces caldosos de mariscos, salmón y costras crujientes de castaña.', servingInfo: 'Para 2 a 3 Personas' },
@@ -52,6 +54,7 @@ const CATEGORY_TRANSLATIONS: Record<Language, Record<string, CategoryTranslation
   },
   en: {
     'promocoes': { title: 'Specials & Highlights', subtitle: 'Unmissable deals and curated beach pairings', description: 'Special craft beer bundles from Praya brewery and exclusive perks for beach lovers.' },
+    'executivo': { title: 'Executive Lunch Menu', subtitle: '1 Main Protein + up to 3 Sides + House Courtesy', description: 'A complete 3-step lunch experience with complimentary gourmet salad and chef appetizer.', servingInfo: 'Individual' },
     'entradinhas': { title: '1. Starters & Finger Foods', subtitle: 'To awaken your appetite with the ocean breeze', description: 'Warming savory broths, golden empanadas, crispy fried pastries, and juicy skewers.' },
     'petiscos': { title: '2. Sharing Platters', subtitle: 'Generous portions crafted for friends and family', description: 'Aged sun-cured beef, baked creamy cassava bowls, giant prawns, and house-cured carpaccio.' },
     'frutos-do-mar': { title: '3. Seafood & Coastal Catches', subtitle: 'Ocean freshness from Alagoas crafted with mastery', description: 'Grilled sea bass, fragrant seafood rice, salmon in wild jabuticaba reduction, and cashew nut crusts.', servingInfo: 'Serves 2 to 3 Guests' },
@@ -67,6 +70,7 @@ const CATEGORY_TRANSLATIONS: Record<Language, Record<string, CategoryTranslation
   },
   fr: {
     'promocoes': { title: "Promotions & Incontournables", subtitle: "Offres irrésistibles et formules sélectionnées", description: "Packs spéciaux de la brasserie Praya et conditions exclusives pour trinquer face à la mer." },
+    'executivo': { title: "Menu Exécutif", subtitle: "1 Protéine + jusqu'à 3 Accompagnements + Courtoisie", description: "Expérience déjeuner en 3 étapes avec salade gourmande et amuse-bouche du chef offerts.", servingInfo: "Individuel" },
     'entradinhas': { title: "1. Entrées & Tapas", subtitle: "Pour éveiller l'appétit avec la douce brise marine", description: "Bouillons chauds parfumés, empanadas dorées, beignets croustillants et brochettes juteuses." },
     'petiscos': { title: "2. Assiettes à Partager", subtitle: "Portions généreuses à déguster entre amis", description: "Viande séchée maturée, purée de manioc onctueuse gratinée, crevettes géantes et carpaccio." },
     'frutos-do-mar': { title: "3. Poissons & Fruits de Mer", subtitle: "La fraîcheur de l'océan d'Alagoas préparée avec maestria", description: "Bar grillé, riz onctueux aux fruits de mer, saumon sauce jabuticaba et croûtes de noix de cajou.", servingInfo: "Pour 2 à 3 Personnes" },
@@ -82,6 +86,7 @@ const CATEGORY_TRANSLATIONS: Record<Language, Record<string, CategoryTranslation
   },
   ja: {
     'promocoes': { title: '特典＆プロモーション', subtitle: 'おすすめのお得なセット＆ハッピーアワー', description: 'グルテンフリークラフトビール「プライア」と海辺で楽しむ限定特別プラン。' },
+    'executivo': { title: 'エグゼクティブ・ランチセット', subtitle: '選べるメイン＋副菜最大3品＋無料サービス', description: 'パッションフルーツサラダとシェフ特製前菜の無料サービスが付いた3ステップランチ。', servingInfo: '1名様分' },
     'entradinhas': { title: '1. 前菜・タパス', subtitle: '心地よい海風とともに楽しむ最初の一皿', description: '熱々の特製スープ、自家製パイ包み、サクサクのパステウ、ジューシーな串焼き。' },
     'petiscos': { title: '2. シェア向けおつまみ', subtitle: '仲間と楽しむボリューム満点の一品', description: '熟成肉の旨味、濃厚なキャッサバ芋のオーブン焼き、大エビのソテー、自家製カルパッチョ。' },
     'frutos-do-mar': { title: '3. 魚介・シーフード', subtitle: 'アラゴアス州の海が育んだ極上の海の幸', description: '白身魚のグリル、旨味たっぷりのシーフードリゾット、特製サーモンソテー。', servingInfo: '2〜3名様分' },

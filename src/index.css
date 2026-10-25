@@ -6,22 +6,21 @@
     --font-display: 'Cinzel', serif;
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     
-    /* Brand Palette */
-    --color-petrol-dark: #0c202d;
-    --color-petrol-surface: #123b53;
-    --color-petrol-elevated: #16374a;
-    --color-petrol-border: #1e4d6b;
-    --color-gold-primary: #f4b41a;
-    --color-gold-hover: #f7c438;
-    --color-gold-muted: #e5a912;
-    --color-text-main: #f8fafc;
-    --color-text-muted: #b4c9d7;
+    /* Clean White Restaurant Palette */
+    --color-bg-main: #ffffff;
+    --color-bg-subtle: #f8fafc;
+    --color-bg-card: #ffffff;
+    --color-border: #e2e8f0;
+    --color-gold-primary: #d97706;
+    --color-gold-hover: #b45309;
+    --color-text-main: #0f172a;
+    --color-text-muted: #64748b;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #0c202d;
-    color: #f8fafc;
+    background-color: #ffffff;
+    color: #0f172a;
     overflow-x: hidden;
   }
 
@@ -34,25 +33,25 @@
   }
 }
 
-/* Custom scrollbar matching Petrol & Gold */
+/* Custom scrollbar for clean white theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #091924;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #194663;
+  background: #cbd5e1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f4b41a;
+  background: #94a3b8;
 }
 
-/* Glass & Glow effects with Petrol & Gold */
+/* Text accents */
 .gold-gradient-text {
-  background: linear-gradient(135deg, #ffe082 0%, #f4b41a 50%, #e5a912 100%);
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -85,7 +84,28 @@
   box-shadow: 0 0 25px rgba(244, 180, 26, 0.9), 0 0 50px rgba(244, 180, 26, 0.5);
 }
 
-/* Red Blur Buttons with dynamic glow and subtle animated pulsation */
+/* Cyan Blur Buttons for general interactive actions (cyan blue) */
+.btn-cyan-blur {
+  background: rgba(6, 182, 212, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px -2px rgba(6, 182, 212, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(103, 232, 249, 0.5);
+  color: #ffffff;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-cyan-blur:hover {
+  background: rgba(8, 145, 178, 1);
+  box-shadow: 0 6px 30px rgba(6, 182, 212, 0.75), 0 0 16px rgba(103, 232, 249, 0.6);
+  transform: translateY(-1.5px) scale(1.02);
+}
+
+.btn-cyan-blur:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Red Blur Button strictly and exclusively for iFood */
 .btn-red-blur {
   background: rgba(234, 29, 44, 0.88);
   backdrop-filter: blur(12px);
@@ -104,5 +124,36 @@
 .btn-red-blur:active {
   transform: translateY(0) scale(0.98);
 }
+
+/* 12s Continuous smooth spin animation for circular logo */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.logo-spinning-12s {
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  animation: spin 12s linear infinite;
+}
+
+/* Seamless infinite ticker marquee */
+@keyframes marqueeContinuous {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-continuous {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeContinuous 32s linear infinite;
+}
+
+.animate-marquee-continuous:hover {
+  animation-play-state: paused;
+}
+
 
 

@@ -158,7 +158,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                           soundFx.play('pop');
                           onRemoveItem(oi.item.id);
                         }}
-                        className="p-1.5 text-[#7A96A8] hover:text-red-400"
+                        className="p-1.5 text-[#7A96A8] hover:text-cyan-400"
                         title={t.orderClear}
                         aria-label="Remover item da comanda"
                       >
@@ -314,7 +314,7 @@ export const TableOrderDrawer: React.FC<TableOrderDrawerProps> = ({
                     soundFx.play('pop');
                     onClearOrder();
                   }}
-                  className="py-2.5 px-3 rounded-lg bg-[#123b53] hover:bg-red-950/40 text-[#A3B8C7] hover:text-red-300 text-xs font-semibold border border-[#1b4865] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="py-2.5 px-3 rounded-lg bg-[#123b53] hover:bg-cyan-950/40 text-[#A3B8C7] hover:text-cyan-300 text-xs font-semibold border border-[#1b4865] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   <span>{t.orderClear}</span>

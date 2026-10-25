@@ -109,7 +109,7 @@ export const IFoodSection: React.FC = () => {
                   title={isMuted ? t.soundOn : t.soundOff}
                   aria-label={isMuted ? t.soundOn : t.soundOff}
                 >
-                  {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
+                  {isMuted ? <VolumeX className="w-4 h-4 text-cyan-400" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
                 </button>
               )}
             </div>

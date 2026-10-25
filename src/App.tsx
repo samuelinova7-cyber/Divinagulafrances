@@ -5,6 +5,7 @@ import { InstagramSection } from './components/InstagramSection';
 import { PromotionsSection } from './components/PromotionsSection';
 import { CategoryNav } from './components/CategoryNav';
 import { MenuSection } from './components/MenuSection';
+import { FloatingMenuDock } from './components/FloatingMenuDock';
 import { TasteQuizModal } from './components/TasteQuizModal';
 import { GoogleReviewsSection } from './components/GoogleReviewsSection';
 import { FaqSection } from './components/FaqSection';
@@ -15,7 +16,7 @@ import { IFoodSection } from './components/IFoodSection';
 import { LiveNotificationsToast } from './components/LiveNotificationsToast';
 import { MENU_CATEGORIES, MenuItem } from './data/menuData';
 import { OrderItem } from './types';
-import { ShoppingBag, Sparkles } from 'lucide-react';
+import { ShoppingBag, Sparkles, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import { soundFx } from './utils/audio';
 import { useLanguage } from './context/LanguageContext';
 
@@ -24,9 +25,48 @@ export default function App() {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
   const [isOrderDrawerOpen, setIsOrderDrawerOpen] = useState(false);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
-  const [activeCategoryId, setActiveCategoryId] = useState('entradinhas');
+  const [activeCategoryId, setActiveCategoryId] = useState('executivo');
   const [searchQuery, setSearchQuery] = useState('');
   const [dietaryFilter, setDietaryFilter] = useState('all');
+
+  // Compact Interactive Menu: categories collapsed by default
+  const [openCategoryIds, setOpenCategoryIds] = useState<Set<string>>(new Set());
+
+  // Toggle single category
+  const handleToggleCategory = (catId: string) => {
+    setOpenCategoryIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(catId)) {
+        next.delete(catId);
+      } else {
+        next.add(catId);
+      }
+      return next;
+    });
+  };
+
+  // Select category from CategoryNav or quick links
+  const handleSelectCategory = (catId: string) => {
+    setActiveCategoryId(catId);
+    setOpenCategoryIds((prev) => new Set(prev).add(catId));
+    const el = document.getElementById(`cat-${catId}`);
+    if (el) {
+      const offset = 140;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Open Executive Menu directly inside the standard cardápio accordion
+  const handleOpenExecutive = () => {
+    handleSelectCategory('executivo');
+  };
 
   // Add item to comanda / order
   const handleAddItem = (item: MenuItem) => {
@@ -170,17 +210,22 @@ export default function App() {
       {/* Light Blue Particles Background */}
       <ParticlesBackground />
       
+      {/* Floating Menu Dock (accompanies user down until reaching cardápio) */}
+      <FloatingMenuDock onOpenExecutive={handleOpenExecutive} />
+      
       {/* 1. Header & Top Bar Navigation */}
       <Navbar
         orderCount={totalOrderCount}
         onOpenOrderDrawer={() => setIsOrderDrawerOpen(true)}
         onOpenQuiz={() => setIsQuizOpen(true)}
+        onOpenExecutive={handleOpenExecutive}
       />
 
       {/* 2. Hero Section */}
       <HeroBanner
         onOpenQuiz={() => setIsQuizOpen(true)}
         onExploreMenu={handleExploreMenu}
+        onOpenExecutive={handleOpenExecutive}
       />
 
       {/* 3. Instagram Section (Placed immediately below Hero as requested) */}
@@ -194,7 +239,7 @@ export default function App() {
         <CategoryNav
           categories={MENU_CATEGORIES}
           activeCategoryId={activeCategoryId}
-          onSelectCategory={setActiveCategoryId}
+          onSelectCategory={handleSelectCategory}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           dietaryFilter={dietaryFilter}
@@ -202,8 +247,8 @@ export default function App() {
         />
       </div>
 
-      {/* 6. Menu Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+      {/* 6. Menu Content Area - Compact & Interactive */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         
         {/* Search / Filter Feedback */}
         {(searchQuery || dietaryFilter !== 'all') && (
@@ -228,36 +273,80 @@ export default function App() {
           </div>
         )}
 
-        {/* Categories with Video Headers & Vertical Item Lists */}
-        {filteredCategories.length > 0 ? (
-          filteredCategories.map((category) => (
-            <MenuSection
-              key={category.id}
-              category={category}
-              onAddItem={handleAddItem}
-              isSearchActive={!!searchQuery || dietaryFilter !== 'all'}
-            />
-          ))
-        ) : (
-          <div className="py-20 text-center space-y-3">
-            <p className="text-lg text-[#FFFFFF] font-serif-heading">
-              {t.noDishesFound}
-            </p>
-            <p className="text-xs sm:text-sm text-[#A3B8C7]">
-              {t.searchPlaceholder}
-            </p>
+        {/* Global Toolbar: Expand/Collapse All (Shown when not searching) */}
+        {!searchQuery && dietaryFilter === 'all' && (
+          <div className="flex items-center justify-between py-1 border-b border-[#1b4865]/60">
+            <div className="flex items-center gap-2">
+              <Layers className="w-4 h-4 text-[#F4B41A]" />
+              <span className="text-xs sm:text-sm font-bold text-white font-serif-heading">
+                Categorias do Cardápio
+              </span>
+              <span className="text-xs text-[#A3B8C7]">
+                (Toque para abrir os pratos)
+              </span>
+            </div>
+
             <button
               onClick={() => {
                 soundFx.play('click');
-                setSearchQuery('');
-                setDietaryFilter('all');
+                const isAllOpen = filteredCategories.every(c => openCategoryIds.has(c.id));
+                if (isAllOpen) {
+                  setOpenCategoryIds(new Set());
+                } else {
+                  setOpenCategoryIds(new Set(filteredCategories.map(c => c.id)));
+                }
               }}
-              className="mt-2 px-5 py-2.5 rounded-lg bg-[#F4B41A] text-[#0C202D] text-xs font-bold shadow-md hover:bg-[#F7C438] transition-colors cursor-pointer"
+              className="text-xs font-semibold text-[#F4B41A] hover:text-[#F7C438] flex items-center gap-1 cursor-pointer transition-colors"
             >
-              {t.filterAll}
+              {filteredCategories.every(c => openCategoryIds.has(c.id)) ? (
+                <>
+                  <ChevronUp className="w-4 h-4" />
+                  <span>Recolher Tudo</span>
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="w-4 h-4" />
+                  <span>Expandir Tudo</span>
+                </>
+              )}
             </button>
           </div>
         )}
+
+        {/* Compact Expandable Categories (Cardápio Executivo is presented in the exact same format as normal categories) */}
+        <div className="space-y-4">
+          {filteredCategories.length > 0 ? (
+            filteredCategories.map((category) => (
+              <MenuSection
+                key={category.id}
+                category={category}
+                onAddItem={handleAddItem}
+                isSearchActive={!!searchQuery || dietaryFilter !== 'all'}
+                isExpanded={openCategoryIds.has(category.id)}
+                onToggleExpand={() => handleToggleCategory(category.id)}
+              />
+            ))
+          ) : (
+            <div className="py-20 text-center space-y-3">
+              <p className="text-lg text-[#FFFFFF] font-serif-heading">
+                {t.noDishesFound}
+              </p>
+              <p className="text-xs sm:text-sm text-[#A3B8C7]">
+                {t.searchPlaceholder}
+              </p>
+              <button
+                onClick={() => {
+                  soundFx.play('click');
+                  setSearchQuery('');
+                  setDietaryFilter('all');
+                }}
+                className="mt-2 px-5 py-2.5 rounded-lg bg-[#F4B41A] text-[#0C202D] text-xs font-bold shadow-md hover:bg-[#F7C438] transition-colors cursor-pointer"
+              >
+                {t.filterAll}
+              </button>
+            </div>
+          )}
+        </div>
 
       </main>
 
@@ -325,6 +414,7 @@ export default function App() {
         onClose={() => setIsQuizOpen(false)}
         onSelectRecommendedDish={handleSelectRecommendedDish}
       />
+
 
       {/* Interactive Table Order Drawer */}
       <TableOrderDrawer

@@ -5,7 +5,7 @@ import { Globe, ChevronDown, Check } from 'lucide-react';
 import { soundFx } from '../utils/audio';
 
 interface LanguageSelectorProps {
-  variant?: 'compact' | 'full';
+  variant?: 'compact' | 'full' | 'card';
   className?: string;
 }
 
@@ -34,31 +34,58 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
   };
 
   return (
-    <div className={`relative inline-block text-left ${className}`} ref={dropdownRef}>
-      {/* Trigger Button showing the current flag */}
-      <button
-        type="button"
-        onClick={() => {
-          soundFx.play('pop');
-          setIsOpen(!isOpen);
-        }}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#123b53] hover:bg-[#184561] text-[#F8FAFC] border border-[#225779] transition-all text-xs font-semibold cursor-pointer shadow-sm active:scale-95"
-        aria-label="Selecionar idioma / Select language"
-        aria-expanded={isOpen}
-      >
-        <span className="text-base leading-none select-none" role="img" aria-label={currentLanguageOption.label}>
-          {currentLanguageOption.flag}
-        </span>
-        <span className="font-mono text-xs uppercase tracking-wider text-[#F4B41A] font-bold">
-          {currentLanguageOption.code.toUpperCase()}
-        </span>
-        {variant === 'full' && (
-          <span className="hidden sm:inline text-xs text-[#CAD8E2]">
+    <div className={`relative ${variant === 'card' ? 'w-full' : 'inline-block'} text-left ${className}`} ref={dropdownRef}>
+      {variant === 'card' ? (
+        <button
+          type="button"
+          onClick={() => {
+            soundFx.play('pop');
+            setIsOpen(!isOpen);
+          }}
+          className="w-full h-full p-3 sm:p-3.5 rounded-2xl bg-gradient-to-b from-[#163a50] to-[#0f2838] hover:from-[#1b4865] hover:to-[#123b53] border-2 border-[#1b4865] hover:border-[#F4B41A] transition-all flex flex-col items-center text-center gap-1.5 shadow-lg group cursor-pointer active:scale-95 relative"
+          aria-label="Selecionar idioma / Select language"
+          aria-expanded={isOpen}
+        >
+          <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded-full bg-[#1b4865] border border-[#23587b] text-[#CAD8E2] text-[9px] font-bold uppercase tracking-wider shadow">
+            5 Idiomas
+          </span>
+          <div className="w-10 h-10 rounded-xl bg-[#1b4865] group-hover:bg-[#F4B41A] text-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+            <span role="img" aria-label={currentLanguageOption.label}>{currentLanguageOption.flag}</span>
+          </div>
+          <span className="text-xs sm:text-sm font-bold text-white group-hover:text-[#F4B41A] transition-colors">
             {currentLanguageOption.nativeName}
           </span>
-        )}
-        <ChevronDown className={`w-3.5 h-3.5 text-[#A3B8C7] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
+          <span className="text-[10px] text-[#A3B8C7] line-clamp-1 flex items-center gap-1">
+            <span>Mudar Idioma</span>
+            <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          </span>
+        </button>
+      ) : (
+        /* Trigger Button showing the current flag */
+        <button
+          type="button"
+          onClick={() => {
+            soundFx.play('pop');
+            setIsOpen(!isOpen);
+          }}
+          className="flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 py-1.5 rounded-lg sm:rounded-xl bg-[#123b53] hover:bg-[#184561] text-[#F8FAFC] border border-[#225779] transition-all text-xs font-semibold cursor-pointer shadow-sm active:scale-95"
+          aria-label="Selecionar idioma / Select language"
+          aria-expanded={isOpen}
+        >
+          <span className="text-base leading-none select-none" role="img" aria-label={currentLanguageOption.label}>
+            {currentLanguageOption.flag}
+          </span>
+          <span className="font-mono text-xs uppercase tracking-wider text-[#F4B41A] font-bold">
+            {currentLanguageOption.code.toUpperCase()}
+          </span>
+          {variant === 'full' && (
+            <span className="hidden sm:inline text-xs text-[#CAD8E2]">
+              {currentLanguageOption.nativeName}
+            </span>
+          )}
+          <ChevronDown className={`w-3.5 h-3.5 text-[#A3B8C7] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+      )}
 
       {/* Dropdown Menu */}
       {isOpen && (
