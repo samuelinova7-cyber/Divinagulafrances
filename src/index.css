@@ -155,25 +155,6 @@
   100% { transform: translateX(250%) skewX(-20deg); }
 }
 
-@keyframes floatRedParticle {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(0.4);
-  }
-  20% {
-    opacity: 0.95;
-    transform: translate(calc(var(--drift-x, 0px) * 0.4), -8px) scale(1);
-  }
-  75% {
-    opacity: 0.8;
-    transform: translate(var(--drift-x, 0px), -24px) scale(0.8);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(calc(var(--drift-x, 0px) * 1.5), -40px) scale(0);
-  }
-}
-
 .btn-ifood-glow {
   background: linear-gradient(135deg, #f02535 0%, #EA1D2C 50%, #c41421 100%);
   animation: ifoodGlowPulse 2.2s ease-in-out infinite;
@@ -182,15 +163,6 @@
 
 .animate-ifood-shimmer {
   animation: ifoodShimmer 2.8s infinite ease-in-out;
-}
-
-.ifood-particle {
-  position: absolute;
-  pointer-events: none;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ff808b 0%, #ea1d2c 70%, #d91122 100%);
-  box-shadow: 0 0 6px #ea1d2c, 0 0 12px #ff4d5a;
-  animation: floatRedParticle 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
 }
 
 /* Seamless infinite ticker marquee */
