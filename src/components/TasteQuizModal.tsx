@@ -53,8 +53,8 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
   const progressPercent = ((currentStep + (isFinished ? 1 : 0)) / quizQuestions.length) * 100;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-[#0c202d] border-2 border-[#F4B41A] rounded-2xl p-6 sm:p-8 shadow-2xl text-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-2xl text-center">
         
         {/* Close Button */}
         <button
@@ -62,7 +62,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
             soundFx.play('click');
             onClose();
           }}
-          className="absolute top-4 right-4 p-2 text-[#A3B8C7] hover:text-white rounded-lg hover:bg-[#123b53] transition-colors"
+          className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
           aria-label="Fechar"
         >
           <X className="w-5 h-5" />
@@ -72,24 +72,24 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
           <div className="space-y-6">
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#F4B41A] uppercase tracking-wider mb-1">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-600 uppercase tracking-wider mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{t.quizTitle}</span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold font-serif-heading text-[#FFFFFF]">
+              <h2 className="text-xl sm:text-2xl font-bold font-serif-heading text-slate-900">
                 {t.quizSubtitle}
               </h2>
             </div>
 
             {/* Progress Bar */}
             <div className="space-y-1.5">
-              <div className="flex justify-between text-[11px] text-[#A3B8C7] font-mono">
+              <div className="flex justify-between text-[11px] text-slate-500 font-mono">
                 <span>{t.quizQuestionOf} {currentStep + 1} / {quizQuestions.length}</span>
                 <span>{Math.round(progressPercent)}%</span>
               </div>
-              <div className="w-full h-2.5 bg-[#123b53] rounded-full overflow-hidden border border-[#1b4865]">
+              <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                 <div
-                  className="h-full bg-gradient-to-r from-[#F4B41A] to-[#F7C438] transition-all duration-300 rounded-full"
+                  className="h-full bg-gradient-to-r from-cyan-500 to-cyan-600 transition-all duration-300 rounded-full"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -97,7 +97,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
 
             {/* Question Text */}
             <div className="min-h-[70px] flex items-center justify-center">
-              <p className="text-base sm:text-lg font-medium text-[#FFFFFF] leading-snug">
+              <p className="text-base sm:text-lg font-medium text-slate-800 leading-snug">
                 {currentQ.q}
               </p>
             </div>
@@ -108,9 +108,9 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 <button
                   key={idx}
                   onClick={() => handleSelectOption(idx)}
-                  className="w-full p-4 rounded-xl bg-[#123b53] hover:bg-[#F4B41A] text-[#F8FAFC] hover:text-[#0C202D] font-medium text-sm text-left border border-[#1b4865] hover:border-[#F4B41A] transition-all transform active:scale-[0.99] flex items-start gap-3 cursor-pointer group shadow-sm"
+                  className="w-full p-4 rounded-xl bg-slate-50 hover:bg-cyan-50 text-slate-800 hover:text-cyan-900 font-medium text-sm text-left border border-slate-200 hover:border-cyan-400 transition-all transform active:scale-[0.99] flex items-start gap-3 cursor-pointer group shadow-sm"
                 >
-                  <span className="w-5 h-5 rounded-full border border-[#326280] group-hover:border-[#0C202D] flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-mono font-bold">
+                  <span className="w-5 h-5 rounded-full border border-slate-300 group-hover:border-cyan-500 flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-mono font-bold text-slate-600 group-hover:text-cyan-600">
                     {idx === 0 ? 'A' : 'B'}
                   </span>
                   <span className="flex-1 leading-relaxed">{optionText}</span>
@@ -121,21 +121,21 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
         ) : (
           /* Result Screen */
           <div className="space-y-6 animate-fadeIn py-2">
-            <div className="w-14 h-14 mx-auto rounded-full bg-[#F4B41A]/15 border border-[#F4B41A]/40 flex items-center justify-center text-[#F4B41A]">
+            <div className="w-14 h-14 mx-auto rounded-full bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-600">
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#F4B41A]">
+              <span className="text-xs font-bold uppercase tracking-wider text-cyan-600">
                 {t.quizTitle}
               </span>
-              <h2 className="text-2xl font-bold font-serif-heading text-[#FFFFFF] mt-1">
+              <h2 className="text-2xl font-bold font-serif-heading text-slate-900 mt-1">
                 {isSeafoodWinner ? t.quizSeafoodResultTitle : t.quizMeatResultTitle}
               </h2>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#123b53] border-2 border-[#F4B41A]/30 text-left text-xs sm:text-sm text-[#D7E3EC] leading-relaxed space-y-2">
-              <p className="font-bold text-[#F4B41A] text-base">
+            <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 text-left text-xs sm:text-sm text-slate-700 leading-relaxed space-y-2">
+              <p className="font-bold text-amber-700 text-base">
                 {isSeafoodWinner ? `🦐 ${t.quizSeafoodResultDish}` : `🥩 ${t.quizMeatResultDish}`}
               </p>
               <p>
@@ -151,7 +151,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                   onClose();
                   onSelectRecommendedDish(isSeafoodWinner ? 'camarão' : 'picanha');
                 }}
-                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#F4B41A] to-[#E5A912] text-[#0C202D] font-bold text-sm hover:from-[#F7C438] hover:to-[#F4B41A] transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                className="w-full py-3.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
               >
                 <Utensils className="w-4 h-4" />
                 <span>{t.quizSeeDishInMenu}</span>
@@ -162,7 +162,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundFx.play('click')}
-                className="w-full py-3.5 px-4 rounded-xl bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-3.5 px-4 rounded-xl bg-[#4285F4] hover:bg-[#3367D6] text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <Star className="w-4 h-4 fill-white" />
                 <span>⭐ Google Reviews (5.0)</span>
@@ -173,7 +173,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => soundFx.play('click')}
-                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#f09433] via-[#dc2743] to-[#bc1888] text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <Instagram className="w-4 h-4" />
                 <span>📸 Instagram {RESTAURANT_INFO.instagram}</span>
@@ -181,7 +181,7 @@ export const TasteQuizModal: React.FC<TasteQuizModalProps> = ({
 
               <button
                 onClick={handleRestart}
-                className="w-full py-2 px-4 text-xs text-[#A3B8C7] hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="w-full py-2 px-4 text-xs text-slate-400 hover:text-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>{t.quizRetake}</span>

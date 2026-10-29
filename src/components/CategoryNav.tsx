@@ -36,7 +36,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
   ];
 
   return (
-    <div className="sticky top-20 z-30 bg-[#0d222e]/95 backdrop-blur-md border-b border-[#1b4865] py-3.5 transition-all shadow-md">
+    <div className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 py-3.5 transition-all shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
         
         {/* Top line: Search Bar + Filter Tags */}
@@ -44,13 +44,13 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
           
           {/* Search Input */}
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7A96A8]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder={t.searchPlaceholder}
-              className="w-full pl-9.5 pr-8 py-2 bg-[#123b53] border border-[#1b4865] rounded-lg text-xs sm:text-sm text-[#FFFFFF] placeholder-[#7A96A8] focus:outline-none focus:border-[#F4B41A] transition-colors"
+              className="w-full pl-9.5 pr-8 py-2 bg-slate-50 border border-slate-300 rounded-lg text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-colors"
             />
             {searchQuery && (
               <button
@@ -58,7 +58,7 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   soundFx.play('click');
                   onSearchChange('');
                 }}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-[#7A96A8] hover:text-white"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 cursor-pointer"
                 aria-label="Limpar busca"
               >
                 <X className="w-3.5 h-3.5" />
@@ -66,9 +66,9 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
             )}
           </div>
 
-          {/* Quick Dietary Filters (interactive segmented tabs with click handlers) */}
+          {/* Quick Dietary Filters */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none text-xs">
-            <div className="flex items-center gap-1 text-[#7A96A8] pr-1 shrink-0 font-medium">
+            <div className="flex items-center gap-1 text-slate-500 pr-1 shrink-0 font-medium">
               <Filter className="w-3.5 h-3.5" />
               <span className="hidden md:inline">Filtro:</span>
             </div>
@@ -83,8 +83,8 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   }}
                   className={`px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#F4B41A] text-[#0C202D] font-bold shadow-sm'
-                      : 'bg-[#123b53] text-[#CAD8E2] hover:bg-[#184561] hover:text-white border border-[#1b4865]'
+                      ? 'bg-cyan-600 text-white font-bold shadow-sm'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                   }`}
                 >
                   {chip.label}
@@ -122,12 +122,12 @@ export const CategoryNav: React.FC<CategoryNavProps> = ({
                   }}
                   className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? 'bg-[#16374a] text-[#F4B41A] border border-[#F4B41A]/50 font-bold shadow-sm'
-                      : 'bg-[#0f2a3a] text-[#CAD8E2] hover:text-white hover:bg-[#123b53] border border-[#1b4865]'
+                      ? 'bg-cyan-50 text-cyan-800 border-2 border-cyan-500 font-bold shadow-sm'
+                      : 'bg-white text-slate-700 hover:text-cyan-700 hover:bg-slate-50 border border-slate-200'
                   }`}
                 >
                   <span>{localized.title}</span>
-                  <span className="text-[10px] text-[#7A96A8] font-mono tabular-nums">
+                  <span className="text-[10px] text-slate-400 font-mono tabular-nums">
                     ({cat.items.length})
                   </span>
                 </button>

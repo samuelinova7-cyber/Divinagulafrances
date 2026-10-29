@@ -3,6 +3,7 @@ import { ExternalLink, ShoppingBag, Volume2, VolumeX, Flame, Clock, Bike, Shield
 import { RESTAURANT_INFO, BRAND_ASSETS } from '../data/menuData';
 import { soundFx } from '../utils/audio';
 import { useLanguage } from '../context/LanguageContext';
+import { IFoodButton } from './IFoodButton';
 
 export const IFoodSection: React.FC = () => {
   const { t } = useLanguage();
@@ -195,19 +196,9 @@ export const IFoodSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Red Blur Action Button */}
+            {/* Red Glow Action Button with Red Particles */}
             <div className="pt-4 space-y-3 border-t border-[#1b4865]">
-              <a
-                href={RESTAURANT_INFO.ifoodUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => soundFx.play('click')}
-                className="btn-red-blur w-full py-4 px-6 rounded-2xl text-white font-black text-base flex items-center justify-center gap-3 cursor-pointer group"
-              >
-                <ShoppingBag className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                <span>{t.ifoodBtnMain}</span>
-                <ExternalLink className="w-4 h-4 opacity-80" />
-              </a>
+              <IFoodButton variant="section" label={t.ifoodBtnMain} />
 
               <p className="text-[11px] text-center text-[#A3B8C7]">
                 {t.ifoodSchedule}

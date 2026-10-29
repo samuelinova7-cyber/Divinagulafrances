@@ -4,6 +4,7 @@ import { RESTAURANT_INFO, BRAND_ASSETS } from '../data/menuData';
 import { soundFx } from '../utils/audio';
 import { useLanguage } from '../context/LanguageContext';
 import { LanguageSelector } from './LanguageSelector';
+import { IFoodButton } from './IFoodButton';
 
 interface NavbarProps {
   onOpenQuiz: () => void;
@@ -149,18 +150,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Language Selector */}
           <LanguageSelector variant="compact" />
 
-          {/* iFood Red-Blur Button (Strictly Red as required) */}
-          <a
-            href={RESTAURANT_INFO.ifoodUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => soundFx.play('click')}
-            className="btn-red-blur inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 text-[11px] sm:text-xs font-black text-white rounded-lg sm:rounded-xl shadow-md whitespace-nowrap cursor-pointer active:scale-95 shrink-0"
-            title="Pedir no iFood"
-          >
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white animate-ping" />
-            <span>iFood</span>
-          </a>
+          {/* iFood Button with Glow & Red Particle Sparks */}
+          <IFoodButton variant="nav" />
 
           {/* WhatsApp Button */}
           <a

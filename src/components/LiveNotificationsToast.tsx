@@ -119,7 +119,7 @@ export const LiveNotificationsToast: React.FC = () => {
       aria-label="Notificações em tempo real do restaurante"
       className="fixed bottom-4 left-4 z-40 max-w-[280px] sm:max-w-[320px] w-full animate-in fade-in slide-in-from-bottom-3 duration-200 pointer-events-auto"
     >
-      <div className="p-2.5 sm:p-3 rounded-xl bg-[#091822]/95 backdrop-blur-md border border-[#1b4865] shadow-lg relative overflow-hidden transition-all hover:border-[#F4B41A]/50">
+      <div className="p-2.5 sm:p-3 rounded-xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-xl relative overflow-hidden transition-all hover:border-cyan-400">
         
         <div className="flex items-center gap-2.5 relative z-10">
           {/* Leading Icon Badge - Compact */}
@@ -129,7 +129,7 @@ export const LiveNotificationsToast: React.FC = () => {
                 ? 'bg-[#EA1D2C] text-white'
                 : currentNotification.type === 'review'
                 ? 'bg-[#4285F4] text-white'
-                : 'bg-[#F4B41A] text-[#0C202D]'
+                : 'bg-amber-500 text-white'
             }`}
           >
             {currentNotification.type === 'ifood_order' && <Bike className="w-4 h-4" />}
@@ -140,17 +140,17 @@ export const LiveNotificationsToast: React.FC = () => {
           {/* Details - Compact & Truncated */}
           <div className="flex-1 min-w-0 pr-4">
             <div className="flex items-center gap-1.5 leading-none">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#F4B41A]">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-700">
                 {currentNotification.title}
               </span>
-              <span className="text-[9px] text-[#7A96A8]">· {currentNotification.timeAgo}</span>
+              <span className="text-[9px] text-slate-400">· {currentNotification.timeAgo}</span>
             </div>
 
-            <p className="text-[11px] font-bold text-white truncate mt-0.5">
+            <p className="text-[11px] font-bold text-slate-900 truncate mt-0.5">
               {currentNotification.subtitle}
             </p>
 
-            <p className="text-[10px] text-[#CAD8E2] truncate mt-0.5 leading-tight">
+            <p className="text-[10px] text-slate-600 truncate mt-0.5 leading-tight">
               {currentNotification.details}
             </p>
           </div>
@@ -161,7 +161,7 @@ export const LiveNotificationsToast: React.FC = () => {
               soundFx.play('click');
               setCurrentNotification(null);
             }}
-            className="p-1 rounded text-[#7A96A8] hover:text-white transition-colors cursor-pointer shrink-0"
+            className="p-1 rounded text-slate-400 hover:text-slate-700 transition-colors cursor-pointer shrink-0"
             aria-label="Fechar notificação"
           >
             <X className="w-3.5 h-3.5" />

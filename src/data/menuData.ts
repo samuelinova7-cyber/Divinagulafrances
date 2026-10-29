@@ -272,22 +272,22 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     iconName: "UtensilsCrossed",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-appetizers-arranged-on-a-table-41551-large.mp4",
     fallbackImage: "/src/assets/images/hero_divina_gula_frances_1790876275132.jpg",
-    description: "Caldinhos quentinhos, empanadas caseiras, pastéis estaladiços e espetinhos suculentos.",
+    description: "Caldinhos quentinhos, empanadas artesanais, pastéis estaladiços e espetinhos suculentos.",
     items: [
-      { id: "ent-1", name: "Caldinho de Feijão", price: 15.30, description: "Caldinho temperado na tradição da casa com torresminho crocante e cheiro-verde." },
-      { id: "ent-2", name: "Caldinho Bobó de Camarão", price: 16.30, description: "Cremoso caldo de mandioca com camarões frescos e toque suave de dendê." },
-      { id: "ent-3", name: "Empanada de Costela (3 uníd.)", price: 46.00, description: "Acompanha vinagrete e maionese picante artesanal." },
-      { id: "ent-4", name: "Bolinho de Camarão", price: 41.00, description: "Feito com massa de macaxeira, recheado com camarão e catupiry cremoso.", tags: ["Sem Glúten", "Mais Pedido"] },
-      { id: "ent-5", name: "Croquete de Cupim", price: 39.00, description: "Acompanha maionese picante da casa." },
-      { id: "ent-6", name: "Tijolinho de Tapioca", price: 36.50, description: "Queijo coalho com tapioca crocante, acompanha deliciosa geleia de pimenta." },
-      { id: "ent-7", name: "Pão de Alho", price: 19.80, description: "Feito com baguete caseira, dourada na brasa com alho suave e manteiga." },
-      { id: "ent-8", name: "Pastel de Camarão Catupiry (4 unidades)", price: 39.80, description: "Bem recheada com filé de camarão e creme catupiry original." },
-      { id: "ent-9", name: "Pastel de Queijo (4 unidades)", price: 35.00, description: "Massa crocante sequinha recheada com blend de queijos derretidos." },
+      { id: "ent-1", name: "Caldinho de Feijão", price: 16.50, description: "Caldinho temperado na tradição da casa com torresminho crocante e cheiro-verde." },
+      { id: "ent-2", name: "Caldinho Bobó de Camarão", price: 18.50, description: "Cremoso caldo de mandioca com camarões frescos e toque suave de dendê." },
+      { id: "ent-3", name: "Empanada de Costela (3 unid.)", price: 49.90, description: "Acompanha vinagrete e maionese picante artesanal." },
+      { id: "ent-4", name: "Bolinho de Camarão", price: 45.00, description: "Feito com massa de macaxeira, recheado com camarão e catupiry cremoso.", tags: ["Sem Glúten", "Mais Pedido"] },
+      { id: "ent-5", name: "Croquete de Cupim", price: 43.00, description: "Acompanha maionese picante da casa." },
+      { id: "ent-6", name: "Tijolinho de Tapioca", price: 36.00, description: "Queijo coalho com tapioca crocante, acompanha deliciosa geleia de pimenta." },
+      { id: "ent-7", name: "Pão de Alho", price: 21.50, description: "Feito com baguete caseira, dourada na brasa com alho suave e manteiga." },
+      { id: "ent-8", name: "Pastel de Camarão", price: 44.00, description: "Bem recheado com filé de camarão e creme catupiry original." },
+      { id: "ent-9", name: "Pastel de Queijo", price: 38.00, description: "Massa crocante sequinha recheada com blend de queijos derretidos." },
       { id: "ent-10", name: "Bun de Robalo", price: 39.80, description: "Dupla de pão chinês no vapor, recheados com filé de robalo crocante e molho especial." },
-      { id: "ent-11", name: "Mini Hambúrguer de Costela", price: 28.80, description: "4 mini hambúrgueres de costela com molho barbecue e macaxeira palha." },
-      { id: "ent-12", name: "Coxinha de Galinha Caipira", price: 42.00, description: "Serve com ketchup de açaí artesanal da casa." },
-      { id: "ent-13", name: "Espetinho de Filé Mignon", price: 22.50, description: "Acompanha farofa crocante e vinagrete fresco." },
-      { id: "ent-14", name: "Espetinho de Frango", price: 18.50, description: "Acompanha farofa crocante e vinagrete fresco." }
+      { id: "ent-11", name: "Mini Hambúrguer de Costela", price: 32.00, description: "Mini hambúrgueres de costela desfiada com barbecue e macaxeira palha." },
+      { id: "ent-12", name: "Bolinho do Francês", price: 42.00, description: "Receita autoral exclusiva da casa, servido com molho da chef.", tags: ["Especialidade Francês"] },
+      { id: "ent-13", name: "Espetinho de Filé", price: 24.50, description: "Acompanha farofa crocante e vinagrete fresco." },
+      { id: "ent-14", name: "Espetinho de Frango", price: 20.50, description: "Acompanha farofa crocante e vinagrete fresco." }
     ]
   },
   {
@@ -299,82 +299,23 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     fallbackImage: "/src/assets/images/dish_picanha_brasa_1790876295398.jpg",
     description: "Carne de sol maturada, atolados no purê de macaxeira, camarões gigantes e carpaccio autoral.",
     items: [
-      { id: "pet-1", name: "Atolado de Camarão", price: 68.00, description: "Filé de camarão refogado sobre purê de macaxeira coberto com catupiry gratinado." },
-      { id: "pet-2", name: "Atolado de Carne de Sol", price: 64.00, description: "Carne de sol refogada sobre purê de macaxeira coberto com catupiry gratinado." },
-      { id: "pet-3", name: "Carne de Sol Tradição", price: 64.00, description: "Carne de sol acebolada com macaxeira frita bem dourada." },
-      { id: "pet-4", name: "Carne de Sol Picanha do Mercadão", price: 89.00, description: "Carne de sol de picanha acebolada com creme de macaxeira e torradas ao alho." },
-      { id: "pet-5", name: "Filé do Mercadão", price: 89.00, description: "Filé mignon acebolado com creme de macaxeira e torradas ao alho crocantes." },
-      { id: "pet-6", name: "Cupim Petisco", price: 74.00, description: "Cupim 24h na brasa com molho próprio e farofa matuta.", tags: ["24h na Brasa"] },
-      { id: "pet-7", name: "Fish 'N Chips", price: 59.80, description: "Filé de peixe empanado bem crocante servido com batatas fritas." },
-      { id: "pet-8", name: "Carpaccio Mineiro", price: 54.00, description: "Carpaccio de picanha defumada de produção própria, acompanha pão sírio na brasa." },
-      { id: "pet-9", name: "Camarão ao Azeite", price: 95.00, description: "Filé de camarão salteado em azeite extravirgem, alho laminado e cebola." },
-      { id: "pet-10", name: "Picanha do Sol com Farofa Matuta", price: 89.80, description: "Carne de sol de picanha com farofa, queijo coalho à milanesa e molho chimichurri." },
-      { id: "pet-11", name: "Camarão Vitrola (10 uníd.)", price: 95.00, description: "Filé de camarão gigante empanado com crosta crocante e molho tártaro da casa." },
-      { id: "pet-12", name: "Brochete Divina", price: 86.00, description: "Filé mignon, bacon, cebola, tomate e pimentão com farofa e vinagrete." }
-    ]
-  },
-  {
-    id: "frutos-do-mar",
-    title: "3. Frutos do Mar",
-    subtitle: "Frescor dos mares alagoanos preparados com maestria",
-    iconName: "Fish",
-    servingInfo: "Serve 02 a 03 Pessoas",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-cooking-prawns-in-a-pan-43229-large.mp4",
-    fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
-    description: "Robalo grelhado, arrozes de frutos do mar, salmão ao molho de jabuticaba e crostas de castanha.",
-    items: [
-      { id: "fm-1", name: "Camarão Catupiry", price: 149.80, portion: "Serve 02 Pessoas", description: "Filé de camarão ao molho com catupiry gratinado, farofa de alho e arroz de castanha.", tags: ["Clássico da Casa"] },
-      { id: "fm-2", name: "Arroz de Camarão", price: 149.80, portion: "Até 3 pessoas", description: "Arroz caldoso bem temperado com camarões salteados, ervas e azeite." },
-      { id: "fm-3", name: "Arroz de Polvo", price: 180.00, portion: "Até 3 pessoas", description: "Arroz suculento com pedaços macios de polvo fresco, tomate e cheiro-verde." },
-      { id: "fm-4", name: "Arroz de Polvo com Camarão", price: 180.00, portion: "Até 3 pessoas", description: "A união nobre de polvo grelhado e camarões em arroz aromático." },
-      { id: "fm-5", name: "Filé de Robalo ao Molho de Camarão", price: 210.00, portion: "Até 3 pessoas", description: "Robalo grelhado com molho de camarão, arroz de alho e batatas coradas." },
-      { id: "fm-6", name: "Filé de Peixe na Castanha", price: 168.00, portion: "Serve 02 Pessoas", description: "Robalo em crosta de castanhas com mousseline de banana-da-terra e farofa de bacon." },
-      { id: "fm-7", name: "Filé de Peixe ao Molho Laranja", price: 168.00, portion: "Serve 02 Pessoas", description: "Robalo ao molho de laranja com arroz de castanha e purê de banana-da-terra." },
-      { id: "fm-8", name: "Peixe Grelhado com Uvas e Legumes", price: 168.00, portion: "Serve 02 Pessoas", description: "Robalo flambado com legumes na manteiga e arroz de alho." },
-      { id: "fm-9", name: "Salmão Grelhado com Uvas e Legumes", price: 168.00, portion: "Serve 02 Pessoas", description: "Salmão flambado com legumes e arroz de alho." },
-      { id: "fm-10", name: "Filé de Salmão ao Molho de Jabuticaba", price: 158.00, portion: "Serve 02 Pessoas", description: "Salmão com arroz de castanha e couve frita crocante." }
-    ]
-  },
-  {
-    id: "moquecas",
-    title: "4. Moquecas",
-    subtitle: "Cozidas em panela de barro com leite de coco fresco e dendê",
-    iconName: "Soup",
-    servingInfo: "Serve 02 Pessoas",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-vegetable-soup-simmering-in-a-pot-43003-large.mp4",
-    fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
-    description: "Acompanham arroz branco soltinho, farofa de dendê crocante e purê aveludado de banana-da-terra.",
-    items: [
-      { id: "moq-1", name: "Moqueca de Camarão", price: 149.80, portion: "Serve 02 Pessoas", description: "Serve com arroz, farofa de dendê e purê de banana-da-terra.", tags: ["Especialidade"] },
-      { id: "moq-2", name: "Moqueca de Peixe", price: 149.80, portion: "Serve 02 Pessoas", description: "Feita com filé de robalo fresco, serve com arroz, farofa de dendê e purê de banana da terra." },
-      { id: "moq-3", name: "Moqueca de Polvo", price: 180.00, portion: "Serve 02 Pessoas", description: "Tentáculos macios de polvo cozidos lentamente, serve com arroz, farofa de dendê e purê de banana-da-terra." },
-      { id: "moq-4", name: "Moqueca de Peixe com Camarão", price: 180.00, portion: "Serve 02 Pessoas", description: "Filé de robalo e camarões, serve com arroz, farofa de dendê e purê de banana da terra." },
-      { id: "moq-5", name: "Moqueca Vegetariana", price: 54.00, portion: "Individual", description: "Moqueca de banana-da-terra com leite de coco, arroz e farofa de dendê.", tags: ["Vegetariano"] }
-    ]
-  },
-  {
-    id: "pratos-da-casa",
-    title: "5. Pratos da Casa",
-    subtitle: "A alma da gastronomia brasileira e mineira contemporânea",
-    iconName: "ChefHat",
-    servingInfo: "Serve 02 Pessoas",
-    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-cutting-a-tender-piece-of-cooked-meat-43001-large.mp4",
-    fallbackImage: "/src/assets/images/dish_picanha_brasa_1790876295398.jpg",
-    description: "Costelas cozidas em fogo brando, feijão tropeiro legítimo, tutu e filés premiados.",
-    items: [
-      { id: "pc-1", name: "Amostrado", price: 148.00, portion: "Até 3 pessoas", description: "Seleção de tutu, tropeiro, couve, arroz, linguiça, costelinha, pernil, franguinho, torresmo e farofa.", tags: ["Banquete Completo"] },
-      { id: "pc-2", name: "Costela Minga ao Bafo", price: 145.00, portion: "Até 3 pessoas", description: "Costela bovina cozida 24h na manteiga de garrafa, serve com arroz, farofa, macaxeira cozida e vinagrete de cebola.", tags: ["Cozida 24h"] },
-      { id: "pc-3", name: "Costela Inteira 45h", price: 210.00, portion: "Até 4 pessoas", description: "Costela preparada por 45h com arroz, farofa de ovo, legumes na brasa e vinagrete.", tags: ["Maturada 45h"] },
-      { id: "pc-4", name: "Filé Bom de Baba", price: 148.00, portion: "Serve 02 Pessoas", description: "Filé com alho crocante, cebolas douradas, arroz biro-biro, couve e batata frita." },
-      { id: "pc-5", name: "Tutu à Mineira", price: 138.00, portion: "Serve 02 Pessoas", description: "Filé de pernil, linguiça, couve refogada, ovos, banana à milanesa e arroz." },
-      { id: "pc-6", name: "Tropeiro Mineiro", price: 138.00, portion: "Serve 02 Pessoas", description: "Filé de pernil, linguiça caseira, couve, torresmo crocante, banana à milanesa e arroz." },
-      { id: "pc-7", name: "Picanha Individual", price: 96.00, portion: "Individual", description: "Picanha grelhada com arroz biro-biro, macaxeira frita, farofa e vinagrete." },
-      { id: "pc-8", name: "Cupim à Parmegiana", price: 88.00, portion: "Serve 02 Pessoas", description: "Cupim empanado gratinado ao molho artesanal de tomate com purê de inhame e arroz." }
+      { id: "pet-1", name: "Atolado de Camarão", price: 75.00, description: "Filé de camarão refogado sobre purê de macaxeira coberto com catupiry gratinado." },
+      { id: "pet-2", name: "Atolado de Carne de Sol", price: 70.00, description: "Carne de sol refogada sobre purê de macaxeira coberto com catupiry gratinado." },
+      { id: "pet-3", name: "Carne de Sol Tradição", price: 72.00, description: "Carne de sol acebolada com macaxeira frita bem dourada." },
+      { id: "pet-4", name: "Carne Sol Picanha do Mercadão", price: 95.50, description: "Carne de sol de picanha acebolada com creme de macaxeira e torradas ao alho." },
+      { id: "pet-5", name: "Filé do Mercadão", price: 95.50, description: "Filé mignon acebolado com creme de macaxeira e torradas ao alho crocantes." },
+      { id: "pet-6", name: "Cupim Petisco", price: 82.00, description: "Cupim 24h na brasa com molho próprio e farofa matuta.", tags: ["24h na Brasa"] },
+      { id: "pet-7", name: "Fish 'N Chips", price: 68.00, description: "Filé de peixe empanado bem crocante servido com batatas fritas." },
+      { id: "pet-8", name: "Carpaccio Mineiro", price: 58.00, description: "Carpaccio de picanha defumada de produção própria, acompanha pão sírio na brasa." },
+      { id: "pet-9", name: "Camarão ao Azeite", price: 99.00, description: "Filé de camarão salteado em azeite extravirgem, alho laminado e cebola." },
+      { id: "pet-10", name: "Picanha do Sol com Farofa Matuta", price: 95.00, description: "Carne de sol de picanha com farofa, queijo coalho à milanesa e molho chimichurri." },
+      { id: "pet-11", name: "Camarão Vitrola (10 unid.)", price: 95.00, description: "Filé de camarão gigante empanado com crosta crocante e molho tártaro da casa." },
+      { id: "pet-12", name: "Brochete Divina", price: 92.00, description: "Filé mignon, bacon, cebola, tomate e pimentão com farofa e vinagrete." }
     ]
   },
   {
     id: "petiscos-brasa",
-    title: "6. Petiscos na Brasa",
+    title: "3. Petiscos na Brasa",
     subtitle: "Dourados no calor do carvão vegetal",
     iconName: "Flame",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-skewered-meat-cooking-on-a-charcoal-grill-42994-large.mp4",
@@ -383,45 +324,56 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     items: [
       { id: "pb-1", name: "Filé de Frango com Bacon", price: 46.00, description: "Filé de coxa e sobrecoxa intercalado com bacon na brasa com farofa e vinagrete." },
       { id: "pb-2", name: "Coração de Galinha", price: 46.00, description: "Corações intercalados com bacon na brasa com farofa e vinagrete." },
-      { id: "pb-3", name: "Camarão na Força", price: 85.00, description: "Camarões na brasa com molho especial de gergelim torrado e gengibre fresco." },
-      { id: "pb-4", name: "Queijo Coalho com Ervas", price: 46.00, description: "Queijo coalho na chapa com pão de alho crocante." },
-      { id: "pb-5", name: "Queijo Coalho com Pipoca de Alho", price: 46.00, description: "Queijo coalho servido na chapa com lâminas crocantes de alho e pão de alho." },
-      { id: "pb-6", name: "Queijo Tranchinha", price: 59.80, description: "Queijo coalho com bacon fatiado na chapa, servido com pão de alho quentinho." }
+      { id: "pb-3", name: "Camarão na Força", price: 95.00, description: "Camarões na brasa com molho especial de gergelim torrado e gengibre fresco." },
+      { id: "pb-4", name: "Queijo Coalho com Ervas", price: 48.00, description: "Queijo coalho na chapa com ervas aromáticas e pão de alho crocante." },
+      { id: "pb-5", name: "Queijo Coalho com Pipoca de Alho", price: 48.00, description: "Queijo coalho servido na chapa com lâminas crocantes de alho e pão de alho." },
+      { id: "pb-6", name: "Queijo Tranchinha", price: 65.00, description: "Queijo coalho com bacon fatiado na chapa, servido com pão de alho quentinho." }
     ]
   },
   {
     id: "linguicas-caseiras",
-    title: "7. Linguiças Caseiras",
+    title: "4. Linguiças Caseiras",
     subtitle: "Receitas artesanais de embutidos nobres",
     iconName: "Drumstick",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-sausages-sizzling-on-a-hot-grill-42995-large.mp4",
     fallbackImage: "/src/assets/images/dish_picanha_brasa_1790876295398.jpg",
     description: "Pernil suíno temperado com ervas e especiarias, aceboladas na chapa.",
     items: [
-      { id: "lc-1", name: "Linguiça de Porco com Macaxeira", price: 48.00, description: "Rodelas de linguiça artesanal de pernil aceboladas servidas com macaxeira cozida ou frita." },
-      { id: "lc-2", name: "Linguiça de Porco com Batata", price: 52.00, description: "Rodelas de linguiça artesanal de pernil aceboladas acompanhadas de batatas fritas crocantes." }
+      { id: "lc-1", name: "Linguiça de Porco com Macaxeira", price: 52.50, description: "Rodelas de linguiça artesanal de pernil aceboladas servidas com macaxeira cozida ou frita." },
+      { id: "lc-2", name: "Linguiça de Porco com Batata", price: 52.50, description: "Rodelas de linguiça artesanal de pernil aceboladas acompanhadas de batatas fritas crocantes." }
     ]
   },
   {
-    id: "panelinhas-saladas",
-    title: "8 & 9. Panelinhas & Saladas",
-    subtitle: "Sabores regionais de tacho e folhas frescas",
+    id: "saladas",
+    title: "5. Saladas",
+    subtitle: "Frescor leve com folhas nobres e frutos do mar",
     iconName: "Salad",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-salad-with-dressing-being-mixed-42998-large.mp4",
     fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
-    description: "Ensopados tradicionais servidos com pão francês quentinho e saladas com frutos do mar.",
+    description: "Saladas frescas com ingredientes nobres e molhos especiais.",
+    items: [
+      { id: "sal-1", name: "Salada Verde com Camarão", price: 63.50, description: "Camarões salteados com mix de folhas nobres, tomates secos, cubos de laranja e crocante de macaxeira." },
+      { id: "sal-2", name: "Salada de Salmão", price: 74.50, description: "Salmão grelhado com mix de folhas, legumes grelhados e molho oriental suave." }
+    ]
+  },
+  {
+    id: "panelinhas",
+    title: "6. Panelinhas",
+    subtitle: "Sabores regionais de tacho e molhos ricos",
+    iconName: "Soup",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-vegetable-soup-simmering-in-a-pot-43003-large.mp4",
+    fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
+    description: "Ensopados tradicionais servidos com pão francês quentinho e temperos nordestinos.",
     items: [
       { id: "pan-1", name: "Panelinha de Miúdos", price: 56.00, description: "Miúdos bovinos apurados no molho rico, serve com pão francês caseiro quentinho." },
       { id: "pan-2", name: "Panelinha de Carneiro", price: 69.00, description: "Ensopado suculento de carneiro regional, serve com pão francês caseiro." },
-      { id: "pan-3", name: "Siri no Coco", price: 69.00, description: "Carne pura de siri catada no leite de coco, serve com farofa de dendê e molho lambão." },
-      { id: "sal-1", name: "Salada Verde com Camarão", price: 58.00, description: "Camarões salteados com mix de folhas nobres, tomates secos, cubos de laranja e crocante de macaxeira." },
-      { id: "sal-2", name: "Salada de Salmão", price: 68.00, description: "Salmão grelhado com mix de folhas, legumes grelhados e molho oriental suave." }
+      { id: "pan-3", name: "Siri no Coco", price: 69.00, description: "Carne pura de siri catada no leite de coco, serve com farofa de dendê e molho lambão." }
     ]
   },
   {
     id: "grelhados-brasa",
-    title: "10. Grelhados na Brasa",
-    subtitle: "Cortes nobres preparados na churrasqueira",
+    title: "7. Grelhados na Brasa",
+    subtitle: "Cortes nobres preparados na brasa de carvão",
     iconName: "Beef",
     servingInfo: "Serve 02 Pessoas",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-slicing-a-grilled-beef-steak-42997-large.mp4",
@@ -430,48 +382,110 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     items: [
       {
         id: "gb-1",
-        name: "Picanha na Brasa",
-        price: 179.80,
+        name: "Picanha",
+        price: 198.00,
         portion: "Serve 02 Pessoas",
-        description: "Picanha bovina selecionada. Serve com arroz, farofa, vinagrete e 1 acompanhamento à escolha: macaxeira frita, macaxeira cozida, pão de alho, legumes refogados ou batatas fritas.",
-        tags: ["Corte Nobre"]
+        description: "Picanha bovina selecionada com capa de gordura perfeita na brasa. Acompanha arroz, farofa, vinagrete e acompanhamento à escolha.",
+        tags: ["Corte Nobre", "Serve 02 Pessoas"]
       },
       {
         id: "gb-2",
-        name: "Maminha na Brasa",
-        price: 149.80,
+        name: "Maminha",
+        price: 165.00,
         portion: "Serve 02 Pessoas",
-        description: "Maminha macia na brasa. Serve com arroz, farofa, vinagrete e 1 acompanhamento à escolha: macaxeira frita, macaxeira cozida, pão de alho, legumes refogados ou batatas fritas."
+        description: "Maminha suculenta e macia na brasa. Acompanha arroz, farofa, vinagrete e acompanhamento à escolha.",
+        tags: ["Serve 02 Pessoas"]
       },
       {
         id: "gb-3",
         name: "Carne de Sol de Picanha",
-        price: 176.00,
+        price: 192.00,
         portion: "Serve 02 Pessoas",
-        description: "Picanha maturada artesanalmente. Serve com arroz, feijão tropeiro, farofa, vinagrete e acompanhamento à escolha: macaxeira frita, macaxeira cozida ou batatas fritas.",
-        tags: ["Autêntica Alagoana"]
+        description: "Picanha maturada artesanalmente na casa. Acompanha arroz, feijão tropeiro, farofa, vinagrete e macaxeira.",
+        tags: ["Autêntica Alagoana", "Serve 02 Pessoas"]
       },
       {
         id: "gb-4",
         name: "Picanha Suína",
-        price: 108.00,
+        price: 120.00,
         portion: "Serve 02 Pessoas",
-        description: "Serve com arroz branco, farofa, vinagrete, batatas sautée douradas e fatias de abacaxi grelhado na brasa."
+        description: "Corte suíno nobre grelhado na brasa com abacaxi tostado, arroz, farofa e vinagrete.",
+        tags: ["Serve 02 Pessoas"]
       }
     ]
   },
   {
     id: "infantil",
-    title: "11. Menu Infantil",
+    title: "8. Infantil",
     subtitle: "Pratinhos pensados com carinho para os pequenos",
     iconName: "Baby",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-french-fries-and-chicken-served-on-a-table-41553-large.mp4",
     fallbackImage: "/src/assets/images/dish_picanha_brasa_1790876295398.jpg",
     description: "Porções equilibradas e saborosas acompanhadas de arroz e batatinha frita.",
     items: [
-      { id: "inf-1", name: "Picadinho de Filé", price: 48.80, portion: "Individual Kids", description: "Filé mignon em cubinhos macios, serve com arroz soltinho, batata frita e ovo frito." },
-      { id: "inf-2", name: "Picadinho de Frango", price: 36.00, portion: "Individual Kids", description: "Peito de frango em tirinhas grelhadas, serve com arroz, batata frita e ovo frito." },
-      { id: "inf-3", name: "Peixinho Empanado", price: 44.00, portion: "Individual Kids", description: "Iscas de peixe branco empanadas crocantes, serve com arroz e batata frita." }
+      { id: "inf-1", name: "Picadinho de Filé", price: 52.00, portion: "Individual Kids", description: "Filé mignon em cubinhos macios, serve com arroz soltinho, batata frita e ovo frito." },
+      { id: "inf-2", name: "Picadinho de Frango", price: 39.00, portion: "Individual Kids", description: "Peito de frango em tirinhas grelhadas, serve com arroz, batata frita e ovo frito." },
+      { id: "inf-3", name: "Peixinho Empanado", price: 48.50, portion: "Individual Kids", description: "Iscas de peixe branco empanadas crocantes, serve com arroz e batata frita." }
+    ]
+  },
+  {
+    id: "frutos-do-mar",
+    title: "9. Frutos do Mar",
+    subtitle: "Frescor dos mares alagoanos preparados com maestria",
+    iconName: "Fish",
+    servingInfo: "Serve 02 a 03 Pessoas",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-cooking-prawns-in-a-pan-43229-large.mp4",
+    fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
+    description: "Robalo grelhado, arrozes de frutos do mar, salmão ao molho de jabuticaba e crostas de castanha.",
+    items: [
+      { id: "fm-1", name: "Camarão Catupiry", price: 175.00, portion: "Serve 02 Pessoas", description: "Filé de camarão ao molho com catupiry gratinado, farofa de alho e arroz de castanha.", tags: ["Clássico da Casa"] },
+      { id: "fm-2", name: "Arroz de Camarão", price: 175.00, portion: "Até 3 pessoas", description: "Arroz caldoso bem temperado com camarões salteados, ervas e azeite." },
+      { id: "fm-3", name: "Arroz de Polvo", price: 198.00, portion: "Até 3 pessoas", description: "Arroz suculento com pedaços macios de polvo fresco, tomate e cheiro-verde." },
+      { id: "fm-4", name: "Arroz de Polvo com Camarão", price: 198.00, portion: "Até 3 pessoas", description: "A união nobre de polvo grelhado e camarões em arroz aromático." },
+      { id: "fm-5", name: "Molho de Camarão", price: 231.00, portion: "Até 3 pessoas", description: "Filé de peixe nobre ao molho de camarão abundante, arroz de alho e batatas coradas." },
+      { id: "fm-6", name: "Filé de Peixe na Castanha", price: 185.00, portion: "Serve 02 Pessoas", description: "Filé de peixe em crosta de castanhas com mousseline de banana-da-terra e farofa de bacon." },
+      { id: "fm-7", name: "Filé de Peixe ao Molho Laranja", price: 185.00, portion: "Serve 02 Pessoas", description: "Filé ao molho suave de laranja com arroz de castanha e purê de banana-da-terra." },
+      { id: "fm-8", name: "Peixe Grelhado com Uvas e Legumes", price: 185.00, portion: "Serve 02 Pessoas", description: "Peixe grelhado flambado com uvas verdes e legumes na manteiga, com arroz de alho." },
+      { id: "fm-9", name: "Salmão Grelhado com Uvas e Legumes", price: 185.00, portion: "Serve 02 Pessoas", description: "Salmão nobre flambado com uvas frescas, legumes na manteiga e arroz de alho." },
+      { id: "fm-10", name: "Filé de Salmão ao Molho de Jabuticaba", price: 185.00, portion: "Serve 02 Pessoas", description: "Salmão com redução artesanal de jabuticaba, arroz de castanha e couve crocante." },
+      { id: "fm-11", name: "Peixe Inteiro", price: 0, portion: "Serve 02 a 03 Pessoas", description: "Peixe fresco do dia assado na brasa. Consultar disponibilidade e tamanho com o atendente.", tags: ["Consultar Disponibilidade"] }
+    ]
+  },
+  {
+    id: "moquecas",
+    title: "10. Moquecas",
+    subtitle: "Cozidas em panela de barro com leite de coco fresco e dendê",
+    iconName: "Soup",
+    servingInfo: "Serve 02 Pessoas",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-vegetable-soup-simmering-in-a-pot-43003-large.mp4",
+    fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
+    description: "Acompanham arroz branco soltinho, farofa de dendê crocante e purê aveludado de banana-da-terra.",
+    items: [
+      { id: "moq-1", name: "Camarão", price: 175.00, portion: "Serve 02 Pessoas", description: "Moqueca farta de camarões, serve com arroz branco, farofa de dendê e purê de banana-da-terra.", tags: ["Especialidade"] },
+      { id: "moq-2", name: "Peixe", price: 165.00, portion: "Serve 02 Pessoas", description: "Feita com postas de peixe fresco, serve com arroz, farofa de dendê e purê de banana da terra." },
+      { id: "moq-3", name: "Polvo", price: 198.00, portion: "Serve 02 Pessoas", description: "Tentáculos macios de polvo cozidos lentamente no coco e dendê, com arroz e purê." },
+      { id: "moq-4", name: "Peixe com Camarão", price: 198.00, portion: "Serve 02 Pessoas", description: "Filé de peixe e camarões graúdos, serve com arroz, farofa de dendê e purê de banana da terra." },
+      { id: "moq-5", name: "Vegetariana", price: 62.00, portion: "Individual", description: "Moqueca aromática de banana-da-terra com leite de coco, arroz e farofa de dendê.", tags: ["Vegetariano"] }
+    ]
+  },
+  {
+    id: "pratos-da-casa",
+    title: "11. Pratos da Casa",
+    subtitle: "A alma da gastronomia brasileira e mineira contemporânea",
+    iconName: "ChefHat",
+    servingInfo: "Serve 02 Pessoas",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-cutting-a-tender-piece-of-cooked-meat-43001-large.mp4",
+    fallbackImage: "/src/assets/images/dish_picanha_brasa_1790876295398.jpg",
+    description: "Costelas cozidas em fogo brando, feijão tropeiro legítimo, tutu e filés premiados.",
+    items: [
+      { id: "pc-1", name: "Amostrado", price: 165.00, portion: "Até 3 pessoas", description: "Seleção de tutu, tropeiro, couve, arroz, linguiça, costelinha, pernil, franguinho, torresmo e farofa.", tags: ["Banquete Completo"] },
+      { id: "pc-2", name: "Costela Minga ao Bafo", price: 162.00, portion: "Até 3 pessoas", description: "Costela bovina cozida lentamente ao bafo, serve com arroz, farofa, macaxeira cozida e vinagrete.", tags: ["Cozida 24h"] },
+      { id: "pc-3", name: "Costela Inteira 45h", price: 232.00, portion: "Até 4 pessoas", description: "Costela preparada por 45h com arroz, farofa de ovo, legumes na brasa e vinagrete.", tags: ["Maturada 45h"] },
+      { id: "pc-4", name: "Filé Bom de Baba", price: 162.00, portion: "Serve 02 Pessoas", description: "Filé com alho crocante, cebolas douradas, arroz biro-biro, couve e batata frita." },
+      { id: "pc-5", name: "Tutu à Mineira", price: 152.00, portion: "Serve 02 Pessoas", description: "Filé de pernil, linguiça, couve refogada, ovos, banana à milanesa e arroz." },
+      { id: "pc-6", name: "Tropeiro Mineiro", price: 152.00, portion: "Serve 02 Pessoas", description: "Filé de pernil, linguiça caseira, couve, torresmo crocante, banana à milanesa e arroz." },
+      { id: "pc-7", name: "Picanha Individual", price: 105.00, portion: "Individual", description: "Picanha grelhada com arroz biro-biro, macaxeira frita, farofa e vinagrete." },
+      { id: "pc-8", name: "Cupim à Parmegiana", price: 98.00, portion: "Serve 02 Pessoas", description: "Cupim empanado gratinado ao molho artesanal de tomate com purê de inhame e arroz." }
     ]
   },
   {
@@ -481,15 +495,15 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     iconName: "IceCream",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-pouring-chocolate-sauce-over-ice-cream-42996-large.mp4",
     fallbackImage: "/src/assets/images/dish_moqueca_camarao_1790876285675.jpg",
-    description: "Cartola alagoana, sobremesas autorais com goiaba, chocolate belga e tapioca.",
+    description: "Cartola alagoana, sobremesas autorais com goiaba, chocolate e tapioca.",
     items: [
-      { id: "sob-1", name: "Crème Brûlée", price: 19.00, description: "Sobremesa clássica com creme de baunilha aveludado e casquinha de açúcar queimado no maçarico." },
-      { id: "sob-2", name: "Pudim de Leite", price: 18.00, description: "Pudim cremoso tradicional sem furinhos, com calda de caramelo dourado." },
-      { id: "sob-3", name: "Brigadeiro", price: 9.90, description: "Brigadeiro artesanal enrolado no granulado nobre de chocolate." },
+      { id: "sob-1", name: "Crème Brûlée", price: 19.00, description: "Sobremesa clássica com creme de baunilha aveludado e casquinha crocante de açúcar queimado." },
+      { id: "sob-2", name: "Pudim de Leite", price: 19.00, description: "Pudim cremoso tradicional sem furinhos, com calda de caramelo dourado." },
+      { id: "sob-3", name: "Brigadeiro", price: 9.00, description: "Brigadeiro artesanal enrolado no granulado nobre de chocolate." },
       { id: "sob-4", name: "Torre de Tapioca", price: 48.00, description: "Sorvete cremoso de tapioca artesanal com redução perfumada de tangerina fresca.", tags: ["Exclusivo"] },
-      { id: "sob-5", name: "Quero-Quero", price: 42.00, description: "Creme de goiabada cascão com creme gelado de queijo sobre biscoito amanteigado de castanha.", tags: ["Autoral"] },
+      { id: "sob-5", name: "Quero-Quero", price: 45.00, description: "Creme de goiabada cascão com creme gelado de queijo sobre biscoito amanteigado de castanha.", tags: ["Autoral"] },
       { id: "sob-6", name: "Cartola", price: 38.00, description: "Banana e queijo manteiga grelhados na manteiga de garrafa com açúcar e canela." },
-      { id: "sob-7", name: "Torta Ferreiro", price: 34.00, description: "Brownie denso com mousse de chocolate e avelãs tostadas, servido com sorvete e calda de chocolate." }
+      { id: "sob-7", name: "Torta Ferreiro", price: 38.00, description: "Brownie denso com mousse de chocolate e avelãs tostadas, servido com sorvete e calda de chocolate." }
     ]
   },
   {
@@ -499,89 +513,103 @@ export const MENU_CATEGORIES: MenuCategory[] = [
     iconName: "GlassWater",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-pouring-cold-orange-juice-into-a-glass-43000-large.mp4",
     fallbackImage: "/src/assets/images/drink_caipiroska_cocktail_1790876304849.jpg",
-    description: "Água de coco da praia, sucos de frutas naturais em copo ou jarra, águas e energéticos.",
+    description: "Água de coco da praia, sucos naturais em copo ou jarra, águas e energéticos.",
     items: [
-      { id: "bna-1", name: "Água de Coco (Copo)", price: 8.50, description: "Água de coco verde geladinha direto do coqueiral." },
-      { id: "bna-2", name: "Jarra de Água de Coco (1L)", price: 18.00, description: "Jarra de água de coco natural para compartilhar à mesa." },
-      { id: "bna-3", name: "Água Mineral (500 ml)", price: 7.00, description: "Sem gás 500ml." },
-      { id: "bna-4", name: "Água Mineral com Gás (500 ml)", price: 7.50, description: "Com gás 500ml." },
-      { id: "bna-5", name: "Água Tônica", price: 9.00, description: "Lata 350ml." },
-      { id: "bna-6", name: "Suco de Fruta (Copo)", price: 9.00, description: "Sabores da estação (Acerola, Caju, Maracujá, Abacaxi, Limão, Manga)." },
-      { id: "bna-7", name: "Jarra de Suco de Fruta", price: 18.00, description: "Jarra 1L de suco natural de polpa de frutas." },
-      { id: "bna-8", name: "Suco de Morango (Copo)", price: 10.00, description: "Suco natural feito na hora com morangos frescos." },
+      { id: "bna-1", name: "Água de Coco", price: 8.00, description: "Água de coco verde geladinha direto do coqueiral." },
+      { id: "bna-2", name: "Jarra de Água de Coco", price: 17.00, description: "Jarra de água de coco natural para compartilhar à mesa." },
+      { id: "bna-3", name: "Água Mineral (500 ml)", price: 7.50, description: "Água mineral sem gás garrafa 500ml." },
+      { id: "bna-4", name: "Água Mineral com Gás (500 ml)", price: 8.50, description: "Água mineral com gás garrafa 500ml." },
+      { id: "bna-5", name: "Água Tônica", price: 9.50, description: "Lata 350ml gelada." },
+      { id: "bna-6", name: "Suco de Fruta", price: 9.50, description: "Sabores da estação naturais (Acerola, Caju, Maracujá, Abacaxi, Limão, Manga)." },
+      { id: "bna-7", name: "Jarra de Suco", price: 19.80, description: "Jarra de 1 litro de suco natural da fruta." },
+      { id: "bna-8", name: "Suco de Morango", price: 12.00, description: "Suco natural feito na hora com morangos frescos selecionados." },
       { id: "bna-9", name: "Jarra de Suco de Morango", price: 24.00, description: "Jarra de 1L com morangos frescos batidos." },
-      { id: "bna-10", name: "Suco de Morango com Laranja (Copo)", price: 13.00, description: "Combinação cítrica e refrescante de frutas frescas." },
-      { id: "bna-11", name: "Jarra de Suco Morango com Laranja", price: 28.00, description: "Jarra de 1L de morangos batidos com suco de laranja natural." },
-      { id: "bna-12", name: "Refrigerante", price: 8.50, description: "Coca-Cola, Coca Zero, Guaraná Antarctica, Sprite (Lata 350ml)." },
-      { id: "bna-13", name: "Red Bull", price: 22.00, description: "Energy Drink lata 250ml." }
+      { id: "bna-10", name: "Suco de Morango com Laranja", price: 14.00, description: "Combinação cítrica e refrescante de frutas frescas." },
+      { id: "bna-11", name: "Jarra de Suco de Morango com Laranja", price: 28.00, description: "Jarra de 1L de morangos batidos com suco de laranja natural." },
+      { id: "bna-12", name: "Refrigerante", price: 9.50, description: "Coca-Cola, Coca Zero, Guaraná Antarctica, Sprite (Lata 350ml)." },
+      { id: "bna-13", name: "Red Bull", price: 24.50, description: "Energy Drink lata 250ml." }
     ]
   },
   {
     id: "cervejas-chopes",
-    title: "14. Cervejas e Chopes",
+    title: "14. Cervejas & Chopes",
     subtitle: "Rótulos artesanais, sem glúten e garrafas estupidamente geladas",
     iconName: "Beer",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-pouring-beer-from-a-tap-into-a-glass-42993-large.mp4",
     fallbackImage: "/src/assets/images/hero_divina_gula_frances_1790876275132.jpg",
     description: "Chopes na pressão (P e G), cervejas 600ml de mesa, opções sem glúten e cervejas especiais.",
     items: [
-      { id: "cer-1", name: "Heineken (600 ml)", price: 19.90, description: "Cerveja lager puro malte garrafa 600ml." },
-      { id: "cer-2", name: "Eisenbahn (600 ml)", price: 17.90, description: "Pilsen puro malte garrafa 600ml." },
-      { id: "cer-3", name: "Amstel Puro Malte (600 ml)", price: 16.90, description: "Puro malte refrescante garrafa 600ml." },
-      { id: "cer-4", name: "Devassa (600 ml)", price: 16.00, description: "Puro malte tropical garrafa 600ml." },
-      { id: "cer-5", name: "Heineken Long Neck", price: 13.50, description: "Garrafa 330ml gelada." },
-      { id: "cer-6", name: "Heineken 0.0 Long Neck", price: 13.50, description: "Cerveja zero álcool 330ml." },
-      { id: "cer-7", name: "Cerveja Praya (Sem Glúten)", price: 12.50, description: "Witbier artesanal refrescante e sem glúten.", tags: ["Sem Glúten", "Artesanal"] },
-      { id: "cer-8", name: "Amstel Ultra 72kcal (Sem Glúten)", price: 12.50, description: "Ultra leve, apenas 72 calorias e livre de glúten.", tags: ["Sem Glúten", "Baixa Caloria"] },
-      { id: "cer-9", name: "Baden Baden (600 ml)", price: 28.00, description: "Cerveja especial artesanal de Campos do Jordão." },
-      { id: "cer-10", name: "Blue Moon", price: 22.00, description: "Belgian White com raspas de casca de laranja Valência e sementes de coentro." },
-      { id: "cer-11", name: "Lagunitas IPA", price: 24.00, description: "IPA californiana com lúpulos marcantes e aroma cítrico." },
-      { id: "cer-12", name: "Chopp Heineken P. (300ml)", price: 9.50, description: "Chopp tirado na pressão com colarinho perfeito." },
-      { id: "cer-13", name: "Chopp Heineken G. (500ml)", price: 12.50, description: "Chopp Heineken na caneca gelada 500ml." },
-      { id: "cer-14", name: "Chopp Amstel P. (300ml)", price: 7.50, description: "Chopp Amstel leve e refrescante na pressão." },
-      { id: "cer-15", name: "Chopp Amstel G. (500ml)", price: 9.50, description: "Chopp Amstel caneca 500ml." }
+      { id: "cer-ln-1", name: "Heineken", price: 14.50, description: "Long Neck 330ml gelada.", tags: ["Long Neck"] },
+      { id: "cer-ln-2", name: "Heineken 0.0", price: 14.50, description: "Long Neck 330ml sem álcool.", tags: ["Long Neck", "Zero Álcool"] },
+      { id: "cer-ln-3", name: "Cerveja Praya (Sem Glúten)", price: 14.50, description: "Witbier artesanal sem glúten garrafa 355ml.", tags: ["Long Neck", "Sem Glúten"] },
+      { id: "cer-ln-4", name: "Amstel Ultra 72kcal (Sem Glúten)", price: 13.50, description: "Ultra leve, apenas 72 calorias e livre de glúten.", tags: ["Long Neck", "Sem Glúten"] },
+      { id: "cer-600-1", name: "Baden Baden (600 ml)", price: 29.00, description: "Cerveja especial artesanal garrafa 600ml.", tags: ["600ml"] },
+      { id: "cer-600-2", name: "Blue Moon", price: 24.00, description: "Belgian White com casca de laranja e coentro.", tags: ["Craft"] },
+      { id: "cer-600-3", name: "Lagunitas IPA", price: 26.50, description: "IPA californiana com lúpulos marcantes.", tags: ["Craft"] },
+      { id: "cer-600-4", name: "Heineken (600 ml)", price: 22.00, description: "Cerveja lager puro malte garrafa 600ml.", tags: ["600ml"] },
+      { id: "cer-600-5", name: "Eisenbahn (600 ml)", price: 19.50, description: "Pilsen puro malte garrafa 600ml.", tags: ["600ml"] },
+      { id: "cer-600-6", name: "Amstel Puro Malte (600 ml)", price: 18.50, description: "Puro malte refrescante garrafa 600ml.", tags: ["600ml"] },
+      { id: "cer-600-7", name: "Devassa (600 ml)", price: 17.50, description: "Puro malte tropical garrafa 600ml.", tags: ["600ml"] },
+      { id: "chp-1", name: "Chopp Heineken P", price: 10.50, description: "Chopp na pressão colarinho cremoso 300ml.", tags: ["Chopp"] },
+      { id: "chp-2", name: "Chopp Heineken G", price: 14.50, description: "Chopp Heineken na caneca gelada 500ml.", tags: ["Chopp"] },
+      { id: "chp-3", name: "Chopp Amstel P", price: 8.50, description: "Chopp Amstel leve na pressão 300ml.", tags: ["Chopp"] },
+      { id: "chp-4", name: "Chopp Amstel G", price: 10.50, description: "Chopp Amstel caneca 500ml.", tags: ["Chopp"] },
+      { id: "chp-5", name: "Chopp Jararaca P", price: 10.50, description: "Chopp artesanal alagoano Jararaca 300ml.", tags: ["Chopp Artesanal"] },
+      { id: "chp-6", name: "Chopp Jararaca G", price: 14.50, description: "Chopp artesanal alagoano Jararaca 500ml.", tags: ["Chopp Artesanal"] }
     ]
   },
   {
     id: "drinks-bar",
-    title: "15. Drinks & Bar",
-    subtitle: "Mixologia autoral, clássicos mundiais, cachaça familiar e destilados",
+    title: "15. Drinks Especiais & da Casa",
+    subtitle: "Mixologia autoral, clássicos mundiais e caipiroskas",
     iconName: "Wine",
     videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-bartender-making-a-cocktail-in-a-glass-43002-large.mp4",
     fallbackImage: "/src/assets/images/drink_caipiroska_cocktail_1790876304849.jpg",
-    description: "Drinks autorais alagoanos, caipiroskas de frutas frescas, destilados premium e licores finos.",
+    description: "Drinks autorais alagoanos, caipiroskas de frutas frescas e clássicos da coquetelaria mundial.",
     items: [
-      { id: "drk-1", name: "Moscow Mule", price: 29.50, description: "Vodka, xarope de gengibre caseiro, suco de limão e espuma aveludada de gengibre na caneca de cobre.", tags: ["Cocktail Clássico"] },
-      { id: "drk-2", name: "Fitzgerald", price: 36.00, description: "Gin premium, suco de limão siciliano, xarope de açúcar e Angostura bitters." },
-      { id: "drk-3", name: "Negroni", price: 34.00, description: "Gin, Campari bitter italiano e Vermute rosso com casca de laranja flambada." },
-      { id: "drk-4", name: "Paloma", price: 42.00, description: "Tequila prata, refrigerante de toranja/grapefruit, suco de limão e borda de sal rosa." },
-      { id: "drk-5", name: "Porn Star Martini", price: 38.00, description: "Vodka com baunilha, polpa de maracujá fresco, licor Passoa e shot de espumante." },
-      { id: "drk-6", name: "Pastoril", price: 29.00, description: "Criação autoral com cachaça Divininha da casa, frutas cítricas e toque de especiarias.", tags: ["Autoral"] },
-      { id: "drk-7", name: "Strawberry Gin Brasil Smash", price: 36.00, description: "Gin nacional, morangos macerados, manjericão fresco e tônica aromática." },
-      { id: "drk-8", name: "Guerreiro Alagoano", price: 35.00, description: "Drink em homenagem à cultura alagoana com cachaça envelhecida, cajá e limão cravo.", tags: ["Autoral"] },
-      { id: "drk-9", name: "Reisado", price: 35.00, description: "Mixologia tropical com rum, abacaxi tostado, xarope de capim-santo e hortelã fresca.", tags: ["Autoral"] },
-      { id: "drk-10", name: "Caipiroska Tradicional", price: 23.00, description: "Vodka nacional com 1 fruta (Limão, Maracujá, Kiwi, Morango ou Abacaxi)." },
-      { id: "drk-11", name: "Caipiroska Tradicional 2 Frutas", price: 26.00, description: "Vodka nacional com blend de 2 frutas frescas à sua escolha." },
-      { id: "drk-12", name: "Caipiroska Absolut", price: 26.00, description: "Vodka Absolut sueca com 1 fruta fresca selecionada." },
-      { id: "drk-13", name: "Caipiroska Absolut 2 Frutas", price: 32.00, description: "Vodka Absolut com combinação de 2 frutas da sua preferência." },
-      { id: "drk-14", name: "Aperol Spritz", price: 39.00, description: "Aperol, espumante prosecco brut, água com gás e fatia de laranja bahia." },
-      { id: "drk-15", name: "Gin Tônica", price: 34.00, description: "Gin London Dry com água tônica premium, zimbro e fatia de limão siciliano." },
-      { id: "drk-16", name: "Mojito", price: 24.00, description: "Rum branco, folhas frescas de hortelã, suco de limão, açúcar e club soda." },
-      { id: "drk-17", name: "Cachaça Divininha (Produção Familiar)", price: 10.50, description: "Dose de cachaça artesanal de produção familiar exclusiva do Divina Gula.", tags: ["Produção Própria"] },
-      { id: "drk-18", name: "Tequila (Dose)", price: 24.00, description: "Dose de tequila importada com sal e limão." },
-      { id: "drk-19", name: "Campari (Dose)", price: 12.00, description: "Dose tradicional do bitter italiano com gelo." },
-      { id: "drk-20", name: "Vodka Smirnoff (Dose)", price: 12.00, description: "Dose de vodka pura com gelo." },
-      { id: "drk-21", name: "Vodka Absolut (Dose)", price: 16.00, description: "Dose de vodka sueca premium." },
-      { id: "drk-22", name: "Gin (Dose)", price: 22.00, description: "Dose de gin botânico com gelo e especiarias." },
-      { id: "drk-23", name: "Whiskie Johnnie Walker Red (Dose)", price: 18.00, description: "Blended scotch whisky 8 anos." },
-      { id: "drk-24", name: "Whiskie Johnnie Walker Black (Dose)", price: 36.00, description: "Blended scotch whisky 12 anos." },
-      { id: "drk-25", name: "Whiskie Johnnie Walker Double Black (Dose)", price: 38.00, description: "Scotch whisky turfado intenso." },
-      { id: "drk-26", name: "Whiskie Old Parr (Dose)", price: 23.00, description: "12 anos blend escocês." },
-      { id: "drk-27", name: "Licor Amarula", price: 23.00, description: "Licor cremoso de fruto marula sul-africano." },
-      { id: "drk-28", name: "Licor Cointreau", price: 24.00, description: "Licor fino francês de laranjas amargas e doces." },
-      { id: "drk-29", name: "Licor Cuarenta y Tres (Licor 43)", price: 33.00, description: "Licor espanhol secreto com 43 ingredientes botânicos e cítricos." },
-      { id: "drk-30", name: "Licor Drambuie", price: 27.00, description: "Licor nobre de whisky escocês, mel de urze e ervas aromáticas." },
-      { id: "drk-31", name: "Licor Frangélico", price: 27.00, description: "Licor italiano de avelãs tostadas e cacau." }
+      { id: "drk-1", name: "Moscow Mule", price: 32.00, description: "Vodka, xarope de gengibre caseiro, suco de limão e espuma aveludada de gengibre na caneca de cobre.", tags: ["Drinks Especiais"] },
+      { id: "drk-2", name: "Fitzgerald", price: 36.00, description: "Gin premium, suco de limão siciliano, xarope de açúcar e Angostura bitters.", tags: ["Drinks Especiais"] },
+      { id: "drk-3", name: "Negroni", price: 36.00, description: "Gin, Campari bitter italiano e Vermute rosso com casca de laranja flambada.", tags: ["Drinks Especiais"] },
+      { id: "drk-4", name: "Paloma", price: 46.00, description: "Tequila prata, refrigerante de toranja/grapefruit, suco de limão e borda de sal rosa.", tags: ["Drinks Especiais"] },
+      { id: "drk-5", name: "Porn Star Martini", price: 42.00, description: "Vodka com baunilha, polpa de maracujá fresco, licor Passoa e shot de espumante.", tags: ["Drinks Especiais"] },
+      { id: "drk-6", name: "Pastoril", price: 32.00, description: "Criação autoral com cachaça Divininha da casa, frutas cítricas e toque de especiarias.", tags: ["Drinks Especiais", "Autoral"] },
+      { id: "drk-7", name: "Strawberry Gin Brasil Smash", price: 36.00, description: "Gin nacional, morangos macerados, manjericão fresco e tônica aromática.", tags: ["Drinks Especiais"] },
+      { id: "drk-8", name: "Guerreiro Alagoano", price: 36.00, description: "Drink em homenagem à cultura alagoana com cachaça envelhecida, cajá e limão cravo.", tags: ["Drinks Especiais", "Autoral"] },
+      { id: "drk-9", name: "Reisado", price: 36.00, description: "Mixologia tropical com rum, abacaxi tostado, xarope de capim-santo e hortelã fresca.", tags: ["Drinks Especiais", "Autoral"] },
+      { id: "drk-10", name: "Caipiroska Tradicional", price: 24.50, description: "Vodka nacional com 1 fruta (Limão, Maracujá, Kiwi, Morango ou Abacaxi).", tags: ["Do Nosso Jeito"] },
+      { id: "drk-11", name: "Caipiroska Tradicional 2 Frutas", price: 27.50, description: "Vodka nacional com blend de 2 frutas frescas à sua escolha.", tags: ["Do Nosso Jeito"] },
+      { id: "drk-12", name: "Caipiroska Absolut", price: 28.50, description: "Vodka Absolut sueca com 1 fruta fresca selecionada.", tags: ["Do Nosso Jeito"] },
+      { id: "drk-13", name: "Caipiroska Absolut 2 Frutas", price: 32.00, description: "Vodka Absolut com combinação de 2 frutas da sua preferência.", tags: ["Do Nosso Jeito"] },
+      { id: "drk-14", name: "Aperol Spritz", price: 42.00, description: "Aperol, espumante prosecco brut, água com gás e fatia de laranja bahia.", tags: ["Do Nosso Jeito"] },
+      { id: "drk-15", name: "Gin Tônica", price: 37.50, description: "Gin London Dry com água tônica premium, zimbro e fatia de limão siciliano.", tags: ["Do Nosso Jeito"] },
+      { id: "drk-16", name: "Mojito", price: 28.00, description: "Rum branco, folhas frescas de hortelã, suco de limão, açúcar e club soda.", tags: ["Do Nosso Jeito"] },
+      { id: "drk-17", name: "Piña Colada", price: 32.00, description: "Rum caribenho, leite de coco artesanal, suco de abacaxi fresco e leite condensado.", tags: ["Do Nosso Jeito"] }
+    ]
+  },
+  {
+    id: "destilados-licores",
+    title: "16. Destilados & Licores",
+    subtitle: "Rótulos selecionados, doses nobres e cachaça de produção familiar",
+    iconName: "Flame",
+    videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-bartender-making-a-cocktail-in-a-glass-43002-large.mp4",
+    fallbackImage: "/src/assets/images/drink_caipiroska_cocktail_1790876304849.jpg",
+    description: "Whiskies escoceses, vodkas, gins, tequila, cachaça Divininha e licores finos.",
+    items: [
+      { id: "dst-1", name: "Tequila Dose", price: 24.00, description: "Dose de tequila importada servida com sal e limão.", tags: ["Destilados"] },
+      { id: "dst-2", name: "Campari Dose", price: 13.00, description: "Dose tradicional do bitter italiano com gelo e laranja.", tags: ["Destilados"] },
+      { id: "dst-3", name: "Vodka Smirnoff", price: 13.00, description: "Dose de vodka pura gelada.", tags: ["Destilados"] },
+      { id: "dst-4", name: "Vodka Absolut", price: 17.00, description: "Dose de vodka premium sueca.", tags: ["Destilados"] },
+      { id: "dst-5", name: "Gin", price: 22.00, description: "Dose de gin botânico com gelo e especiarias.", tags: ["Destilados"] },
+      { id: "dst-6", name: "Whiskie Johnnie Walker Red", price: 19.00, description: "Dose de blended scotch whisky 8 anos.", tags: ["Destilados"] },
+      { id: "dst-7", name: "Whiskie Johnnie Walker Black", price: 30.00, description: "Dose de blended scotch whisky 12 anos.", tags: ["Destilados"] },
+      { id: "dst-8", name: "Whiskie Johnnie Walker Double Black", price: 35.00, description: "Dose de blended scotch whisky turfado intenso.", tags: ["Destilados"] },
+      { id: "dst-9", name: "Whiskie Old Par", price: 25.00, description: "Dose de whisky escocês 12 anos blend.", tags: ["Destilados"] },
+      { id: "dst-10", name: "Cachaça Divininha (Produção Familiar)", price: 12.00, description: "Cachaça artesanal de alambique da família Divina Gula.", tags: ["Produção Própria", "Destilados"] },
+      { id: "lic-1", name: "Amarula", price: 23.00, description: "Licor cremoso de fruto marula sul-africano.", tags: ["Licores"] },
+      { id: "lic-2", name: "Cointreau", price: 24.00, description: "Licor fino francês de laranjas amargas e doces.", tags: ["Licores"] },
+      { id: "lic-3", name: "Cuarenta y Tres", price: 33.00, description: "Licor espanhol com 43 ingredientes botânicos e cítricos.", tags: ["Licores"] },
+      { id: "lic-4", name: "Drambuie", price: 27.00, description: "Licor nobre de whisky escocês com mel e ervas.", tags: ["Licores"] },
+      { id: "lic-5", name: "Frangèlico", price: 27.00, description: "Licor italiano de avelãs tostadas e cacau.", tags: ["Licores"] }
     ]
   }
 ];

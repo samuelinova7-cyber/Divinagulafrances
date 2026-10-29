@@ -4,6 +4,7 @@ import { RESTAURANT_INFO, BRAND_ASSETS } from '../data/menuData';
 import { soundFx } from '../utils/audio';
 import { useLanguage } from '../context/LanguageContext';
 import { LanguageSelector } from './LanguageSelector';
+import { IFoodButton } from './IFoodButton';
 
 interface HeroBannerProps {
   onOpenQuiz: () => void;
@@ -79,27 +80,8 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
               </span>
             </button>
 
-            {/* Shortcut 3: iFood (Preserved Red as requested) */}
-            <a
-              href={RESTAURANT_INFO.ifoodUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => soundFx.play('click')}
-              className="p-3 sm:p-3.5 rounded-2xl bg-[#EA1D2C] hover:bg-[#d91826] border border-red-600 transition-all flex flex-col items-center text-center gap-1.5 shadow-md group cursor-pointer active:scale-95 relative text-white"
-            >
-              <span className="absolute -top-2 right-2 px-1.5 py-0.5 rounded-full bg-white text-[#EA1D2C] text-[9px] font-black uppercase tracking-wider shadow animate-pulse">
-                Delivery
-              </span>
-              <div className="w-10 h-10 rounded-xl bg-white text-[#EA1D2C] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                <span className="font-black text-sm">iFood</span>
-              </div>
-              <span className="text-xs sm:text-sm font-bold text-white group-hover:text-red-100 transition-colors">
-                Pedir no iFood
-              </span>
-              <span className="text-[10px] text-red-100 line-clamp-1">
-                Entrega Rápida
-              </span>
-            </a>
+            {/* Shortcut 3: iFood with Glow & Red Particles */}
+            <IFoodButton variant="hero" />
 
             {/* Shortcut 4: Seleção de Idioma */}
             <div className="flex flex-col">

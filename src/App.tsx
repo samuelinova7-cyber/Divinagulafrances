@@ -9,21 +9,16 @@ import { FloatingMenuDock } from './components/FloatingMenuDock';
 import { TasteQuizModal } from './components/TasteQuizModal';
 import { GoogleReviewsSection } from './components/GoogleReviewsSection';
 import { FaqSection } from './components/FaqSection';
-import { TableOrderDrawer } from './components/TableOrderDrawer';
 import { Footer } from './components/Footer';
-import { ParticlesBackground } from './components/ParticlesBackground';
 import { IFoodSection } from './components/IFoodSection';
 import { LiveNotificationsToast } from './components/LiveNotificationsToast';
-import { MENU_CATEGORIES, MenuItem } from './data/menuData';
-import { OrderItem } from './types';
-import { ShoppingBag, Sparkles, ChevronDown, ChevronUp, Layers } from 'lucide-react';
+import { MENU_CATEGORIES } from './data/menuData';
+import { Sparkles, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import { soundFx } from './utils/audio';
 import { useLanguage } from './context/LanguageContext';
 
 export default function App() {
   const { t } = useLanguage();
-  const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
-  const [isOrderDrawerOpen, setIsOrderDrawerOpen] = useState(false);
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState('executivo');
   const [searchQuery, setSearchQuery] = useState('');
@@ -67,47 +62,6 @@ export default function App() {
   const handleOpenExecutive = () => {
     handleSelectCategory('executivo');
   };
-
-  // Add item to comanda / order
-  const handleAddItem = (item: MenuItem) => {
-    setOrderItems((prev) => {
-      const existing = prev.find((oi) => oi.item.id === item.id);
-      if (existing) {
-        return prev.map((oi) =>
-          oi.item.id === item.id ? { ...oi, quantity: oi.quantity + 1 } : oi
-        );
-      }
-      return [...prev, { item, quantity: 1 }];
-    });
-  };
-
-  // Update item quantity in comanda
-  const handleUpdateQuantity = (itemId: string, delta: number) => {
-    setOrderItems((prev) => {
-      return prev
-        .map((oi) => {
-          if (oi.item.id === itemId) {
-            const newQty = oi.quantity + delta;
-            return newQty > 0 ? { ...oi, quantity: newQty } : null;
-          }
-          return oi;
-        })
-        .filter(Boolean) as OrderItem[];
-    });
-  };
-
-  // Remove item
-  const handleRemoveItem = (itemId: string) => {
-    setOrderItems((prev) => prev.filter((oi) => oi.item.id !== itemId));
-  };
-
-  // Clear comanda
-  const handleClearOrder = () => {
-    setOrderItems([]);
-  };
-
-  // Total quantity count
-  const totalOrderCount = orderItems.reduce((sum, oi) => sum + oi.quantity, 0);
 
   // Recommended dish selection from Taste Quiz
   const handleSelectRecommendedDish = (keyword: string) => {
@@ -168,14 +122,15 @@ export default function App() {
             cat.id === 'petiscos' ||
             cat.id === 'petiscos-brasa' ||
             cat.id === 'linguicas-caseiras' ||
-            cat.id === 'panelinhas-saladas'
+            cat.id === 'panelinhas'
         );
       } else if (dietaryFilter === 'bebidas') {
         items = items.filter(
           (i) =>
             cat.id === 'bebidas-nao-alcoolicas' ||
             cat.id === 'cervejas-chopes' ||
-            cat.id === 'drinks-bar'
+            cat.id === 'drinks-bar' ||
+            cat.id === 'destilados-licores'
         );
       } else if (dietaryFilter === 'sobremesas') {
         items = items.filter((i) => cat.id === 'sobremesas');
@@ -206,17 +161,13 @@ export default function App() {
   }, [searchQuery, dietaryFilter]);
 
   return (
-    <div className="min-h-screen bg-[#0c202d] text-[#F8FAFC] flex flex-col font-sans selection:bg-[#F4B41A] selection:text-[#0C202D] relative">
-      {/* Light Blue Particles Background */}
-      <ParticlesBackground />
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#00BCD4] selection:text-white relative">
       
       {/* Floating Menu Dock (accompanies user down until reaching cardápio) */}
       <FloatingMenuDock onOpenExecutive={handleOpenExecutive} />
       
       {/* 1. Header & Top Bar Navigation */}
       <Navbar
-        orderCount={totalOrderCount}
-        onOpenOrderDrawer={() => setIsOrderDrawerOpen(true)}
         onOpenQuiz={() => setIsQuizOpen(true)}
         onOpenExecutive={handleOpenExecutive}
       />
@@ -228,11 +179,11 @@ export default function App() {
         onOpenExecutive={handleOpenExecutive}
       />
 
-      {/* 3. Instagram Section (Placed immediately below Hero as requested) */}
+      {/* 3. Instagram Section (Placed immediately below Hero) */}
       <InstagramSection />
 
       {/* 4. Promotions & Happy Hour Section */}
-      <PromotionsSection onAddItem={handleAddItem} />
+      <PromotionsSection />
 
       {/* 5. Menu Anchor & Category Scroller */}
       <div id="cardapio" className="scroll-mt-20">
@@ -248,16 +199,16 @@ export default function App() {
       </div>
 
       {/* 6. Menu Content Area - Compact & Interactive */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         
         {/* Search / Filter Feedback */}
         {(searchQuery || dietaryFilter !== 'all') && (
-          <div className="p-4 rounded-xl bg-[#123b53] border-2 border-[#1b4865] flex items-center justify-between shadow-md">
-            <div className="text-xs sm:text-sm text-[#D7E3EC]">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between shadow-sm">
+            <div className="text-xs sm:text-sm text-slate-700">
               <span>Resultados: </span>
-              {searchQuery && <strong className="text-[#F4B41A]">"{searchQuery}" </strong>}
+              {searchQuery && <strong className="text-cyan-700">"{searchQuery}" </strong>}
               {dietaryFilter !== 'all' && (
-                <span className="text-[#A3B8C7]">({dietaryFilter})</span>
+                <span className="text-slate-500 font-medium">({dietaryFilter})</span>
               )}
             </div>
             <button
@@ -266,7 +217,7 @@ export default function App() {
                 setSearchQuery('');
                 setDietaryFilter('all');
               }}
-              className="text-xs text-[#F4B41A] hover:underline font-bold cursor-pointer"
+              className="text-xs text-cyan-600 hover:text-cyan-700 hover:underline font-bold cursor-pointer"
             >
               {t.clearFilters}
             </button>
@@ -275,14 +226,14 @@ export default function App() {
 
         {/* Global Toolbar: Expand/Collapse All (Shown when not searching) */}
         {!searchQuery && dietaryFilter === 'all' && (
-          <div className="flex items-center justify-between py-1 border-b border-[#1b4865]/60">
+          <div className="flex items-center justify-between py-2 border-b border-slate-200">
             <div className="flex items-center gap-2">
-              <Layers className="w-4 h-4 text-[#F4B41A]" />
-              <span className="text-xs sm:text-sm font-bold text-white font-serif-heading">
+              <Layers className="w-4 h-4 text-cyan-600" />
+              <span className="text-xs sm:text-sm font-bold text-slate-900 font-serif-heading">
                 Categorias do Cardápio
               </span>
-              <span className="text-xs text-[#A3B8C7]">
-                (Toque para abrir os pratos)
+              <span className="text-xs text-slate-500 hidden sm:inline">
+                (Toque em uma categoria para visualizar os pratos e preços)
               </span>
             </div>
 
@@ -296,7 +247,7 @@ export default function App() {
                   setOpenCategoryIds(new Set(filteredCategories.map(c => c.id)));
                 }
               }}
-              className="text-xs font-semibold text-[#F4B41A] hover:text-[#F7C438] flex items-center gap-1 cursor-pointer transition-colors"
+              className="text-xs font-semibold text-cyan-700 hover:text-cyan-800 flex items-center gap-1 cursor-pointer transition-colors px-3 py-1.5 rounded-lg bg-cyan-50 hover:bg-cyan-100"
             >
               {filteredCategories.every(c => openCategoryIds.has(c.id)) ? (
                 <>
@@ -320,18 +271,17 @@ export default function App() {
               <MenuSection
                 key={category.id}
                 category={category}
-                onAddItem={handleAddItem}
                 isSearchActive={!!searchQuery || dietaryFilter !== 'all'}
                 isExpanded={openCategoryIds.has(category.id)}
                 onToggleExpand={() => handleToggleCategory(category.id)}
               />
             ))
           ) : (
-            <div className="py-20 text-center space-y-3">
-              <p className="text-lg text-[#FFFFFF] font-serif-heading">
+            <div className="py-20 text-center space-y-3 bg-slate-50 rounded-2xl border border-slate-200">
+              <p className="text-lg text-slate-900 font-serif-heading">
                 {t.noDishesFound}
               </p>
-              <p className="text-xs sm:text-sm text-[#A3B8C7]">
+              <p className="text-xs sm:text-sm text-slate-500">
                 {t.searchPlaceholder}
               </p>
               <button
@@ -340,7 +290,7 @@ export default function App() {
                   setSearchQuery('');
                   setDietaryFilter('all');
                 }}
-                className="mt-2 px-5 py-2.5 rounded-lg bg-[#F4B41A] text-[#0C202D] text-xs font-bold shadow-md hover:bg-[#F7C438] transition-colors cursor-pointer"
+                className="mt-2 px-5 py-2.5 rounded-lg bg-cyan-600 hover:bg-cyan-700 text-white text-xs font-bold shadow-md transition-colors cursor-pointer"
               >
                 {t.filterAll}
               </button>
@@ -351,16 +301,16 @@ export default function App() {
       </main>
 
       {/* Interactive Quiz do Sabor Banner in Flow */}
-      <section className="bg-gradient-to-r from-[#0a1c26] via-[#123b53] to-[#0a1c26] border-y-2 border-[#1b4865] py-12 shadow-xl">
+      <section className="bg-gradient-to-r from-cyan-900 via-slate-900 to-cyan-950 py-12 shadow-md text-white">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 text-xs font-bold text-[#F4B41A] uppercase tracking-wider">
-            <Sparkles className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-cyan-300 uppercase tracking-wider">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
             <span>{t.quizTitle}</span>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#FFFFFF]">
+          <h3 className="text-2xl sm:text-3xl font-bold font-serif-heading text-white">
             {t.quizSubtitle}
           </h3>
-          <p className="text-xs sm:text-sm text-[#D7E3EC] max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
             {t.heroStory}
           </p>
           <button
@@ -368,7 +318,7 @@ export default function App() {
               soundFx.play('click');
               setIsQuizOpen(true);
             }}
-            className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#F4B41A] to-[#E5A912] hover:from-[#F7C438] hover:to-[#F4B41A] text-[#0C202D] font-bold text-sm transition-all shadow-xl inline-flex items-center gap-2 cursor-pointer"
+            className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-white font-bold text-sm transition-all shadow-lg inline-flex items-center gap-2 cursor-pointer"
           >
             <Sparkles className="w-4 h-4" />
             <span>{t.quizTitle}</span>
@@ -379,51 +329,23 @@ export default function App() {
       {/* 6.5 iFood Delivery Section (alternating photo and video in the same block) */}
       <IFoodSection />
 
-      {/* 7. Google 5.0 ⭐ Reviews & Rating Section with Location Alternating Media + Interactive Map */}
+      {/* 7. Google 5.0 ⭐ Reviews & Rating Section */}
       <GoogleReviewsSection />
 
-      {/* 8. Frequently Asked Questions (FAQ - 10 Perguntas e Respostas) */}
+      {/* 8. Frequently Asked Questions (FAQ) */}
       <FaqSection />
 
       {/* 9. Footer */}
       <Footer />
 
-      {/* Real-time Google Reviews and Order Notifications (Local Dining & iFood) with sound */}
+      {/* Real-time Google Reviews and Order Notifications */}
       <LiveNotificationsToast />
-
-      {/* Floating Comanda Button for Fast Access */}
-      {totalOrderCount > 0 && (
-        <div className="fixed bottom-6 right-6 z-40 animate-bounce">
-          <button
-            onClick={() => {
-              soundFx.play('click');
-              setIsOrderDrawerOpen(true);
-            }}
-            className="flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-gradient-to-r from-[#F4B41A] to-[#E5A912] text-[#0C202D] font-bold text-sm shadow-2xl border-2 border-[#123b53] hover:scale-105 transition-transform cursor-pointer"
-            aria-label="Abrir comanda com itens"
-          >
-            <ShoppingBag className="w-5 h-5" />
-            <span>{t.navComanda} ({totalOrderCount})</span>
-          </button>
-        </div>
-      )}
 
       {/* Interactive Taste Quiz Modal */}
       <TasteQuizModal
         isOpen={isQuizOpen}
         onClose={() => setIsQuizOpen(false)}
         onSelectRecommendedDish={handleSelectRecommendedDish}
-      />
-
-
-      {/* Interactive Table Order Drawer */}
-      <TableOrderDrawer
-        isOpen={isOrderDrawerOpen}
-        onClose={() => setIsOrderDrawerOpen(false)}
-        orderItems={orderItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-        onClearOrder={handleClearOrder}
       />
 
     </div>
