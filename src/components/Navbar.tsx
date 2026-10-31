@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Phone, Menu as MenuIcon, X, ChefHat } from 'lucide-react';
+import { Sparkles, Phone, Menu as MenuIcon, X } from 'lucide-react';
 import { RESTAURANT_INFO, BRAND_ASSETS } from '../data/menuData';
 import { soundFx } from '../utils/audio';
 import { useLanguage } from '../context/LanguageContext';
@@ -8,7 +8,6 @@ import { IFoodButton } from './IFoodButton';
 
 interface NavbarProps {
   onOpenQuiz: () => void;
-  onOpenExecutive: () => void;
 }
 
 const TICKER_ITEMS = [
@@ -22,7 +21,6 @@ const TICKER_ITEMS = [
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenQuiz,
-  onOpenExecutive,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
@@ -89,29 +87,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Zone 2: Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold text-slate-700">
           <a 
-            href="#promocoes" 
-            onClick={() => soundFx.play('click')}
-            className="hover:text-amber-600 transition-colors"
-          >
-            {t.navPromo}
-          </a>
-          <a 
             href="#cardapio" 
             onClick={() => soundFx.play('click')}
             className="hover:text-amber-600 transition-colors"
           >
             {t.navMenu}
           </a>
-          <button 
-            onClick={() => {
-              soundFx.play('click');
-              onOpenExecutive();
-            }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 font-bold cursor-pointer transition-all active:scale-95 text-xs shadow-xs"
-          >
-            <ChefHat className="w-3.5 h-3.5" />
-            <span>Cardápio Executivo</span>
-          </button>
           <button 
             onClick={() => {
               soundFx.play('click');
@@ -233,16 +214,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <div className="flex flex-col space-y-3 text-sm font-semibold text-slate-700">
             <a
-              href="#promocoes"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                soundFx.play('click');
-              }}
-              className="py-1 hover:text-amber-600"
-            >
-              🌟 {t.navPromo}
-            </a>
-            <a
               href="#cardapio"
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -252,17 +223,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               📖 {t.navMenu}
             </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                soundFx.play('click');
-                onOpenExecutive();
-              }}
-              className="py-2 px-3 rounded-xl bg-amber-50 text-left flex items-center gap-2 text-amber-900 font-bold border border-amber-300 text-xs shadow-xs cursor-pointer"
-            >
-              <ChefHat className="w-4 h-4 text-amber-700" />
-              <span>🍽️ Cardápio Executivo</span>
-            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

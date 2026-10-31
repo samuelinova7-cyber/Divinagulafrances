@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroBanner } from './components/HeroBanner';
 import { InstagramSection } from './components/InstagramSection';
-import { PromotionsSection } from './components/PromotionsSection';
 import { CategoryNav } from './components/CategoryNav';
 import { MenuSection } from './components/MenuSection';
 import { FloatingMenuDock } from './components/FloatingMenuDock';
@@ -20,7 +19,7 @@ import { useLanguage } from './context/LanguageContext';
 export default function App() {
   const { t } = useLanguage();
   const [isQuizOpen, setIsQuizOpen] = useState(false);
-  const [activeCategoryId, setActiveCategoryId] = useState('executivo');
+  const [activeCategoryId, setActiveCategoryId] = useState('entradinhas');
   const [searchQuery, setSearchQuery] = useState('');
   const [dietaryFilter, setDietaryFilter] = useState('all');
 
@@ -56,11 +55,6 @@ export default function App() {
         behavior: 'smooth'
       });
     }
-  };
-
-  // Open Executive Menu directly inside the standard cardápio accordion
-  const handleOpenExecutive = () => {
-    handleSelectCategory('executivo');
   };
 
   // Recommended dish selection from Taste Quiz
@@ -127,6 +121,7 @@ export default function App() {
       } else if (dietaryFilter === 'bebidas') {
         items = items.filter(
           (i) =>
+            cat.id === 'bebidas-na-alcoolicas' ||
             cat.id === 'bebidas-nao-alcoolicas' ||
             cat.id === 'cervejas-chopes' ||
             cat.id === 'drinks-bar' ||
@@ -164,28 +159,23 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#00BCD4] selection:text-white relative">
       
       {/* Floating Menu Dock (accompanies user down until reaching cardápio) */}
-      <FloatingMenuDock onOpenExecutive={handleOpenExecutive} />
+      <FloatingMenuDock onSelectCategory={handleSelectCategory} />
       
       {/* 1. Header & Top Bar Navigation */}
       <Navbar
         onOpenQuiz={() => setIsQuizOpen(true)}
-        onOpenExecutive={handleOpenExecutive}
       />
 
       {/* 2. Hero Section */}
       <HeroBanner
         onOpenQuiz={() => setIsQuizOpen(true)}
         onExploreMenu={handleExploreMenu}
-        onOpenExecutive={handleOpenExecutive}
       />
 
       {/* 3. Instagram Section (Placed immediately below Hero) */}
       <InstagramSection />
 
-      {/* 4. Promotions & Happy Hour Section */}
-      <PromotionsSection />
-
-      {/* 5. Menu Anchor & Category Scroller */}
+      {/* 4. Menu Anchor & Category Scroller */}
       <div id="cardapio" className="scroll-mt-20">
         <CategoryNav
           categories={MENU_CATEGORIES}

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { ChefHat, Utensils, Sparkles, ArrowDown } from 'lucide-react';
+import { Utensils, ArrowDown } from 'lucide-react';
 import { soundFx } from '../utils/audio';
 
 interface FloatingMenuDockProps {
-  onOpenExecutive: () => void;
+  onSelectCategory?: (id: string) => void;
 }
 
 export const FloatingMenuDock: React.FC<FloatingMenuDockProps> = ({
-  onOpenExecutive,
+  onSelectCategory,
 }) => {
   const [isPastMenu, setIsPastMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -52,91 +52,100 @@ export const FloatingMenuDock: React.FC<FloatingMenuDockProps> = ({
     }
   };
 
-  if (!isVisible) return null;
+  // If not visible or already arrived at the menu, do not show
+  if (!isVisible || isPastMenu) return null;
 
   return (
     <aside aria-label="Navegação rápida do cardápio" className="fixed z-35 transition-all duration-300">
-      
-      {/* 1. WHILE SCROLLING DOWN UNTIL REACHING THE MENU: Persistent Floating Bar accompanying the descent */}
-      {!isPastMenu ? (
-        <div className="fixed top-20 inset-x-0 mx-auto max-w-4xl px-4 animate-slideDown pointer-events-none">
-          <div className="pointer-events-auto bg-white/95 backdrop-blur-lg border border-slate-200/90 rounded-2xl shadow-xl p-2 sm:p-2.5 flex items-center justify-between gap-2 overflow-x-auto scrollbar-none">
-            
-            {/* Direct Executive Menu Launcher */}
+      {/* Floating Bar accompanying descent down to the menu */}
+      <div className="fixed top-20 inset-x-0 mx-auto max-w-4xl px-4 animate-slideDown pointer-events-none">
+        <div className="pointer-events-auto bg-white/95 backdrop-blur-lg border border-slate-200/90 rounded-2xl shadow-xl p-2 sm:p-2.5 flex items-center justify-between gap-2 overflow-x-auto scrollbar-none">
+          
+          {/* Main Cardápio Completo Button */}
+          <button
+            onClick={() => scrollToSection('cardapio')}
+            className="flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white font-extrabold text-xs shadow-md whitespace-nowrap hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
+          >
+            <Utensils className="w-4 h-4 stroke-[2.5]" />
+            <span>📖 Cardápio Completo</span>
+            <ArrowDown className="w-3.5 h-3.5 animate-bounce" />
+          </button>
+
+          {/* Quick Category Jump Buttons */}
+          <div className="flex items-center gap-1.5 shrink-0 text-xs">
             <button
               onClick={() => {
-                soundFx.play('click');
-                onOpenExecutive();
+                if (onSelectCategory) {
+                  onSelectCategory('entradinhas');
+                } else {
+                  scrollToSection('cat-entradinhas');
+                }
               }}
-              className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white font-extrabold text-xs shadow-md whitespace-nowrap hover:scale-105 active:scale-95 transition-all cursor-pointer shrink-0"
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold whitespace-nowrap transition-colors flex items-center gap-1 cursor-pointer"
             >
-              <ChefHat className="w-4 h-4 stroke-[2.5]" />
-              <span>🍽️ Cardápio Executivo</span>
-              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-white text-amber-700 text-[10px] font-mono font-bold">
-                R$ 36,90
-              </span>
+              <span>🍤</span>
+              <span>Entradinhas</span>
             </button>
 
-            {/* Quick jump buttons down to menu sections */}
-            <div className="flex items-center gap-1.5 shrink-0 text-xs">
-              
-              <button
-                onClick={() => {
-                  soundFx.play('click');
-                  onOpenExecutive();
-                }}
-                className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold whitespace-nowrap transition-colors flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>🥩</span>
-                <span className="hidden xs:inline">Executivo (3 Etapas)</span>
-                <span className="xs:hidden">Executivo</span>
-              </button>
+            <button
+              onClick={() => {
+                if (onSelectCategory) {
+                  onSelectCategory('petiscos');
+                } else {
+                  scrollToSection('cat-petiscos');
+                }
+              }}
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold whitespace-nowrap transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              <span>🥘</span>
+              <span>Petiscos</span>
+            </button>
 
-              <button
-                onClick={() => scrollToSection('cardapio')}
-                className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border border-cyan-200 font-semibold whitespace-nowrap transition-colors flex items-center gap-1.5 cursor-pointer"
-              >
-                <Utensils className="w-3.5 h-3.5 text-cyan-600" />
-                <span>Cardápio Completo</span>
-                <ArrowDown className="w-3 h-3 text-cyan-600 animate-bounce" />
-              </button>
+            <button
+              onClick={() => {
+                if (onSelectCategory) {
+                  onSelectCategory('frutos-do-mar');
+                } else {
+                  scrollToSection('cat-frutos-do-mar');
+                }
+              }}
+              className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-cyan-50 hover:bg-cyan-100 text-cyan-800 border border-cyan-200 font-semibold whitespace-nowrap transition-colors flex items-center gap-1 cursor-pointer"
+            >
+              <span>🐟</span>
+              <span>Frutos do Mar</span>
+            </button>
 
-              <button
-                onClick={() => scrollToSection('promocoes')}
-                className="hidden md:flex px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold whitespace-nowrap transition-colors items-center gap-1.5 cursor-pointer"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Promoções</span>
-              </button>
+            <button
+              onClick={() => {
+                if (onSelectCategory) {
+                  onSelectCategory('grelhados-brasa');
+                } else {
+                  scrollToSection('cat-grelhados-brasa');
+                }
+              }}
+              className="hidden sm:flex px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold whitespace-nowrap transition-colors items-center gap-1 cursor-pointer"
+            >
+              <span>🥩</span>
+              <span>Grelhados</span>
+            </button>
 
-            </div>
-
+            <button
+              onClick={() => {
+                if (onSelectCategory) {
+                  onSelectCategory('bebidas-nao-alcoolicas');
+                } else {
+                  scrollToSection('cat-bebidas-nao-alcoolicas');
+                }
+              }}
+              className="hidden md:flex px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold whitespace-nowrap transition-colors items-center gap-1 cursor-pointer"
+            >
+              <span>🍹</span>
+              <span>Bebidas</span>
+            </button>
           </div>
-        </div>
-      ) : (
-        /* 2. ONCE IN THE MENU: Floating Executive Button floating on bottom-left */
-        <div className="fixed bottom-6 left-6 z-40 animate-fadeIn">
-          <button
-            onClick={() => {
-              soundFx.play('click');
-              onOpenExecutive();
-            }}
-            className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-white hover:bg-amber-500 text-slate-800 hover:text-white font-extrabold text-xs shadow-xl border-2 border-amber-400 transition-all hover:scale-105 active:scale-95 cursor-pointer"
-            title="Abrir Cardápio Executivo"
-          >
-            <div className="w-7 h-7 rounded-full bg-amber-500 group-hover:bg-white text-white group-hover:text-amber-600 flex items-center justify-center transition-colors">
-              <ChefHat className="w-4 h-4 stroke-[2.5]" />
-            </div>
-            <div className="text-left">
-              <span className="block leading-none font-bold">🍽️ Cardápio Executivo</span>
-              <span className="text-[10px] text-amber-700 group-hover:text-white font-mono leading-none">
-                A partir de R$ 36,90
-              </span>
-            </div>
-          </button>
-        </div>
-      )}
 
+        </div>
+      </div>
     </aside>
   );
 };
